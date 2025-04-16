@@ -392,8 +392,8 @@ export default function ParticleCanvas() {
                     const dist = Math.sqrt(dx * dx + dy * dy)
 
                     if (dist < 200) {
-                        p.vx += (dx / dist) * 0.02
-                        p.vy += (dy / dist) * 0.02
+                        p.vx += (dx / dist) * 0.001
+                        p.vy += (dy / dist) * 0.001
                     }
                 }
 
@@ -407,7 +407,7 @@ export default function ParticleCanvas() {
 
                         // Apply repulsion when particles get too close
                         if (dist < 30) {
-                            const force = 0.01 / Math.max(0.1, dist)
+                            const force = 0.02 / Math.max(0.1, dist)
                             p.vx -= (dx / dist) * force
                             p.vy -= (dy / dist) * force
                         }
