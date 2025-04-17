@@ -36,7 +36,7 @@ function Hero() {
 
             <div className={"flex gap-x-2 z-10 mt-8 items-start"}>
                 <Card
-                    className={"h-44 bg-primary group border-[#2b3686] hover:border-[#4756b8] border-2 p-4 transition-all duration-200 ease-in-out text-white"}>
+                    className={"h-48 bg-primary cursor-pointer group border-[#2b3686] hover:border-[#4756b8] border-2 p-4 transition-all duration-200 ease-in-out text-white"}>
                     <CardTitle
                         className={"text-2xl group-hover:text-[#5EA1FF] transition-all duration-200 ease-in-out flex"}>
                         <TerminalIcon color={"#4a63ff"} size={32} className={"mr-2"}/>
@@ -63,7 +63,7 @@ function Hero() {
                     </div>
                 </Card>
                 <Card
-                    className={"h-36 bg-primary group border-[#2b3686] hover:border-[#4756b8] border-2 p-4 transition-all duration-200 ease-in-out text-white"}>
+                    className={"h-40 bg-primary group cursor-pointer border-[#2b3686] hover:border-[#4756b8] border-2 p-4 transition-all duration-200 ease-in-out text-white"}>
                     <CardTitle
                         className={"text-2xl group-hover:text-[#5EA1FF] transition-all duration-200 ease-in-out flex"}>
                         <TerminalIcon color={"#4a63ff"} size={32} className={"mr-2"}/>
@@ -90,7 +90,7 @@ function Hero() {
                     </div>
                 </Card>
                 <Card
-                    className={"h-36 bg-primary group border-[#2b3686] hover:border-[#4756b8] border-2 p-4 transition-all duration-200 ease-in-out text-white"}>
+                    className={"h-40 bg-primary group cursor-pointer border-[#2b3686] hover:border-[#4756b8] border-2 p-4 transition-all duration-200 ease-in-out text-white"}>
                     <CardTitle
                         className={"text-2xl group-hover:text-[#5EA1FF] transition-all duration-200 ease-in-out flex"}>
                         <TerminalIcon color={"#4a63ff"} size={32} className={"mr-2"}/>
