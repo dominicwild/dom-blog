@@ -3,6 +3,7 @@ import ReactMarkdown, {Components} from "react-markdown";
 import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter';
 import {oneDark} from 'react-syntax-highlighter/dist/esm/styles/prism';
 import remarkGfm from "remark-gfm";
+import rehypeRaw from "rehype-raw";
 
 type MarkdownProps = {
     children: string,
@@ -71,6 +72,9 @@ const Markdown = ({
         td: ({node, ...props}) => (
             <td className="px-6 py-4 text-sm text-slate-300" {...props} />
         ),
+        small: ({node, ...props}) => (
+            <small className="text-sm" {...props} />
+        ),
         code: ({node, className, children, ...props}) => {
             const match = /language-(\w+)/.exec(className || '');
             const code = String(children).replace(/\n$/, '')
@@ -83,7 +87,7 @@ const Markdown = ({
                     {code}
                 </SyntaxHighlighter>
             ) : (
-                <code className={`${className} bg-gray-200 p-0.5 px-1 rounded-xs`} {...props}>
+                <code className={`${className} bg-gray-950 block p-4 border-2 border-gray-700 rounded`} {...props}>
                     {children}
                 </code>
             )
@@ -92,6 +96,7 @@ const Markdown = ({
     return (
         <ReactMarkdown components={markdownComponents}
                        remarkPlugins={[remarkGfm]}
+                       rehypePlugins={[rehypeRaw]}
         >
             {children}
         </ReactMarkdown>

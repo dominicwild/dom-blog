@@ -129,7 +129,7 @@ that confidence and competence are not always companions.*
 What followed was a twelve-block victory flight, complete with aerial acrobatics intended to impress a flock of admiring
 pigeons gathered at Union Square. Onlookers would later describe it as:
 
-<div style="font-size: 1.2em; font-style: italic; color: #555; text-align: center; padding: 15px; border-left: 4px solid #ddd;">
+<div style="font-size: 1.2em; font-style: italic; color: #d1d5db; text-align: center; padding: 15px; border-left: 4px solid #ddd;">
 "The most confident a bird has ever looked while being completely wrong."
 </div>
 
