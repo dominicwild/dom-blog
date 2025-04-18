@@ -218,7 +218,7 @@ artisanal sandwiches, gourmet cupcakes, and, during a particularly ambitious pha
 abandoned after an unfortunate incident involving wasabi that left Larry temporarily unable to taste anything for two
 weeks.
 
-![Larry's reaction after the infamous wasabi incident, showing him with ruffled feathers and a slightly dazed expression, drinking from a tiny bird bath to cool his beak. Bartholomew looks on with concern.]
+![Larry's reaction after the infamous wasabi incident, showing him with ruffled feathers and a slightly dazed expression, drinking from a tiny bird bath to cool his beak. Bartholomew looks on with concern.](/articles/pigeon/incident.png)
 *Image: "The Wasabi Incident" — Larry's ill-fated venture into sushi acquisition, a rare miscalculation in an otherwise
 flawless career.*
 
@@ -238,7 +238,7 @@ For in a world quick to dismiss the ambitions of the small and feathered, Larry 
 keen eye, and the right accessories, even a pigeon can redefine an industry. And with the right friends, even our
 mistakes can lead to the most delicious adventures.
 
-![A statue-like pose of Larry perched on Bartholomew's head, both looking regal and accomplished against the city skyline. The golden retriever sits proudly in his red wagon, while Larry's monocle catches the light dramatically.]
+![A statue-like pose of Larry perched on Bartholomew's head, both looking regal and accomplished against the city skyline. The golden retriever sits proudly in his red wagon, while Larry's monocle catches the light dramatically.](/articles/pigeon/regal.png)
 *Image: "Legends of the Urban Jungle" — The duo in their iconic pose, immortalized in countless urban wildlife tales and
 at least one questionable tattoo on a delivery driver's shoulder.*
 
