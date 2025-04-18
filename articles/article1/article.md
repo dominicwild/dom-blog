@@ -3,7 +3,7 @@
 > *"In the cutthroat world of urban foraging, one must either evolve or settle for crumbs."* — Larry the Pigeon,
 *Memoirs of a Monocled Maverick*
 
-![Larry the Pigeon in his signature monocle perched on a city lamppost, surveying the streets below with an air of sophistication. A pizza delivery scooter can be seen in the background.](/articles/monoclePigeon.png)
+![Larry the Pigeon in his signature monocle perched on a city lamppost, surveying the streets below with an air of sophistication. A pizza delivery scooter can be seen in the background.](/articles/pigeon/monocle-pigeon.png)
 *"The Watchful Eye" — Larry in his strategic observation post, calculating delivery trajectories with
 mathematical precision.*
 
@@ -33,8 +33,8 @@ underworld, a case of imprinting gone gloriously awry.
 little '**extra**'." And in Larry's case, that little "extra" was a monocle—yes, a _monocle_—that he'd pilfered from an
 unsuspecting hipster's vest pocket during a particularly brazen swoop near a craft brewery.
 
-![Close-up of Larry wearing his trademark monocle, which gives him an aristocratic appearance despite his otherwise common pigeon features. The monocle should have a thin gold chain attached.]
-*Image: "The Distinguished Gentleman" — Larry's signature monocle, the tool that transformed a common pigeon into an
+![Close-up of Larry wearing his trademark monocle, which gives him an aristocratic appearance despite his otherwise common pigeon features. The monocle should have a thin gold chain attached.](/articles/pigeon/pigeon-close-up.png)
+*"The Distinguished Gentleman" — Larry's signature monocle, the tool that transformed a common pigeon into an
 uncommon thief.*
 
 The monocle wasn't merely a fashion statement, though Larry did cut a rather distinguished figure among the urban bird
@@ -68,8 +68,8 @@ LARRY'S DAILY SCHEDULE
 23:00 - Tactical review and tomorrow's planning
 ```
 
-![Larry performing aerial maneuvers above a water tower, demonstrating impressive agility as he practices swooping techniques. The early morning sun creates a silhouette effect.]
-*Image: "The Morning Routine" — Larry's disciplined training regimen in the pre-dawn hours, perfecting the swooping
+![Larry performing aerial maneuvers above a water tower, demonstrating impressive agility as he practices swooping techniques. The early morning sun creates a silhouette effect.](/articles/pigeon/agility.png)
+*"The Morning Routine" — Larry's disciplined training regimen in the pre-dawn hours, perfecting the swooping
 techniques that would make him legendary.*
 
 The pigeon's commitment to physical excellence was matched only by his intellectual pursuits. Larry had, through means
@@ -105,8 +105,8 @@ season, Larry had become the bird to beat, with a record-breaking seventeen succ
     * Signature move: "The Monocular Mirage"
     * Win rate: **94%**
 
-![An action shot of the Pizza Theft Championship in progress, showing Larry executing a perfect swoop while confused delivery personnel look at their malfunctioning GPS devices. Other bird competitors can be seen watching with envy in the background.]
-*Image: "The Championship Heist" — Larry's record-breaking 17th theft of the day, demonstrating perfect form as
+![An action shot of the Pizza Theft Championship in progress, showing Larry executing a perfect swoop while confused delivery personnel look at their malfunctioning GPS devices. Other bird competitors can be seen watching with envy in the background.](/articles/pigeon/steal.png)
+*"The Championship Heist" — Larry's record-breaking 17th theft of the day, demonstrating perfect form as
 competitors watch in awe.*
 
 But none could match Larry's sophisticated approach. His signature move—the "Monocular Mirage"—involved creating an
@@ -122,8 +122,8 @@ It was on a particularly blustery Tuesday in April when Larry's illustrious care
 spotted what appeared to be an unusually aerodynamic pizza box soaring through Madison Square Park, Larry executed a
 textbook interception, gripping what he assumed was his cheesy prize with triumphant talons.
 
-![Larry in mid-flight, proudly carrying an orange frisbee that he mistook for a pizza box. His expression shows absolute confidence despite his mistake. Park-goers below are pointing up in amazement.]
-*Image: "The Confident Mistake" — Larry's triumphant flight with what he believed was the perfect prize, demonstrating
+![Larry in mid-flight, proudly carrying an orange frisbee that he mistook for a pizza box. His expression shows absolute confidence despite his mistake. Park-goers below are pointing up in amazement.](/articles/pigeon/frisbee.png)
+*"The Confident Mistake" — Larry's triumphant flight with what he believed was the perfect prize, demonstrating
 that confidence and competence are not always companions.*
 
 What followed was a twelve-block victory flight, complete with aerial acrobatics intended to impress a flock of admiring
@@ -150,8 +150,8 @@ Rather than the confrontation one might expect between thief and rightful owner,
 most unlikely alliance. Bartholomew, it turned out, shared Larry's appreciation for the finer things in
 life—particularly pizza, which his human often ordered but rarely shared in portions befitting a canine of his stature.
 
-![Larry and Bartholomew the golden retriever on a rooftop, engaged in what appears to be a serious conversation. Larry is perched on the edge of his frisbee while Bartholomew sits attentively, both illuminated by the setting sun with the city skyline in the background.]
-*Image: "The Partnership Proposal" — The historic moment when two unlikely allies formed the most successful
+![Larry and Bartholomew the golden retriever on a rooftop, engaged in what appears to be a serious conversation. Larry is perched on the edge of his frisbee while Bartholomew sits attentively, both illuminated by the setting sun with the city skyline in the background.](/articles/pigeon/dog.png)
+*"The Partnership Proposal" — The historic moment when two unlikely allies formed the most successful
 cross-species heist team in urban history.*
 
 "You have wings, I have wheels," Bartholomew woofed philosophically, referring to the vintage Radio Flyer wagon his
@@ -203,8 +203,8 @@ from above.
 
 </details>
 
-![A split-screen action sequence showing their heist in progress: on the left, Bartholomew deploying his "Adorable Distraction Protocol" with a delivery person; on the right, Larry swooping in to snatch a pizza slice; and at the bottom, both making their getaway with Bartholomew pulling a wagon containing their prize while Larry flies overhead.]
-*Image: "Operation Pizza Procurement" — The duo's seamless heist methodology in action, demonstrating perfect
+![A split-screen action sequence showing their heist in progress: on the left, Bartholomew deploying his "Adorable Distraction Protocol" with a delivery person; on the right, Larry swooping in to snatch a pizza slice; and at the bottom, both making their getaway with Bartholomew pulling a wagon containing their prize while Larry flies overhead.](/articles/pigeon/heist.png)
+*"Operation Pizza Procurement" — The duo's seamless heist methodology in action, demonstrating perfect
 coordination between air and ground forces.*
 
 The cross-species collaboration became legendary in the urban wildlife community. Squirrels spoke of it in hushed tones.

@@ -47,6 +47,9 @@ const Markdown = ({
         img: ({node, ...props}) => (
             <img className={"max-h-[50vh] my-4 mx-auto"} {...props}  />
         ),
+        blockquote: ({node, ...props}) => (
+            <blockquote className={"border-l-4 pl-4 italic text-gray-400"} {...props}  />
+        ),
         code: ({node, className, children, ...props}) => {
             const match = /language-(\w+)/.exec(className || '');
             const code = String(children).replace(/\n$/, '')
