@@ -1,10 +1,11 @@
 import React from "react";
 import ParticleCanvas from "@/app/_components/ParticleCanvas";
 import TypeWriter from "@/app/_components/TypeWriter";
-import {ArrowDown, TerminalIcon} from "lucide-react";
+import {ArrowDown, ArrowRightIcon, TerminalIcon} from "lucide-react";
 import {Card, CardTitle} from "@/components/ui/card";
 import {Badge} from "@/components/ui/badge";
 import {getRecentArticlesMetadata} from "@/articles/getArticles";
+import Link from "next/link";
 
 const Articles = async () => {
     const dateFormat = Intl.DateTimeFormat('en-GB', {
@@ -23,7 +24,7 @@ const Articles = async () => {
                         key={article.title}
                     >
                         <CardTitle
-                            className={" h-9 text-2xl group-hover:text-[#5EA1FF] transition-all duration-200 ease-in-out flex"}>
+                            className={"h-9 text-2xl group-hover:text-[#5EA1FF] transition-all duration-200 ease-in-out flex"}>
                             <TerminalIcon color={"#4a63ff"} size={32} className={"mr-2 h-8 w-[10%]"}/>
                             <div className={"line-clamp-1 w-[85%]"}>
                                 {article.title}
@@ -82,13 +83,23 @@ function Hero() {
                 {/*</div>*/}
             </div>
 
-            <div className={"flex gap-x-2 z-10 mt-8 items-start mx-[20%] justify-between"}>
-                <Articles/>
-            </div>
-
-
-            <div className="absolute bottom-8 animate-bounce">
-                <ArrowDown className="h-8 w-8 text-blue-400"/>
+            <div className={"z-10 mx-[20%]"}>
+                <div className={"mt-6 mb-2 flex"}>
+                    <div className={"flex-1"}/>
+                    <div
+                        className={"text-blue-300 relative inline-block after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-300 hover:after:w-full"}>
+                        <Link href={"/blogs"} className={" flex "}>
+                            View all
+                            <div className={"flex items-center"}>
+                                <ArrowRightIcon className={"h-[70%]"}/>
+                            </div>
+                        </Link>
+                    </div>
+                    <div className={"pr-4"}/>
+                </div>
+                <div className={"flex gap-x-2 mt-1 items-start justify-between"}>
+                    <Articles/>
+                </div>
             </div>
         </section>
 
