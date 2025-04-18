@@ -15,7 +15,7 @@ const Markdown = ({
                   }: MarkdownProps) => {
     const markdownComponents: Components = {
         h1: ({node, ...props}) => (
-            <h1 className={`text-4xl font-bold mt-8 mb-4 ${header1ClassName}`} {...props} />
+            <h1 className={`text-4xl font-bold mb-2 ${header1ClassName}`} {...props} />
         ),
         h2: ({node, ...props}) => (
             <h2 className="text-3xl font-semibold mt-6 mb-3" {...props} />
@@ -43,6 +43,9 @@ const Markdown = ({
         ),
         p: ({node, ...props}) => (
             <p className={`${paragraph1ClassName}`} {...props} />
+        ),
+        img: ({node, ...props}) => (
+            <img className={"max-h-[50vh] my-4 mx-auto"} {...props}  />
         ),
         code: ({node, className, children, ...props}) => {
             const match = /language-(\w+)/.exec(className || '');

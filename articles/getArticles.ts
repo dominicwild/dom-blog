@@ -47,11 +47,12 @@ export async function getRecentArticlesMetadata() {
 }
 
 export async function getArticleMetaData(folderName: string) {
-    if (!fs.existsSync(folderName)) {
+    const articleFolderFilePath = path.join(articlesDirectory, folderName);
+    if (!fs.existsSync(articleFolderFilePath)) {
         return null;
     }
 
-    const stat = fs.statSync(folderName)
+    const stat = fs.statSync(articleFolderFilePath)
     if (!stat.isDirectory()) {
         return null;
     }
