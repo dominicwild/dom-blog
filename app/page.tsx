@@ -5,10 +5,81 @@ import {ArrowDown, TerminalIcon} from "lucide-react";
 import {Card, CardTitle} from "@/components/ui/card";
 import {Badge} from "@/components/ui/badge";
 
+type Article = {
+    title: string,
+    description: string,
+    icon?: string,
+    tags: string[],
+    date: Date,
+}
+const recentArticles: Article[] = [
+    {
+        title: "Some Title",
+        description: "Some blurb for the article or some starting sentences",
+        tags: ["Technology", "Catto"],
+        date: new Date("12 Apr 2025"),
+    },
+    {
+        title: "Some Title2",
+        description: "Some blurb for the article or some starting sentences",
+        tags: ["Technology", "Catto"],
+        date: new Date("12 Apr 2025"),
+    },
+    {
+        title: "Some Title3",
+        description: "Some blurb for the article or some starting sentences",
+        tags: ["Technology", "Catto"],
+        date: new Date("12 Apr 2025"),
+    }
+]
+
+const Articles = () => {
+    const dateFormat = Intl.DateTimeFormat('en-GB', {
+        day: '2-digit',
+        month: 'short',
+    })
+
+    return (
+        <>
+            {
+                recentArticles.map((article, i) =>
+                    <Card
+                        className={`${i == 0 ? "h-48" : "h-40"} bg-primary cursor-pointer group border-[#2b3686] hover:border-[#4756b8] border-2 p-4 transition-all duration-200 ease-in-out text-white`}
+                        key={article.title}
+                    >
+                        <CardTitle
+                            className={"text-2xl group-hover:text-[#5EA1FF] transition-all duration-200 ease-in-out flex"}>
+                            <TerminalIcon color={"#4a63ff"} size={32} className={"mr-2"}/>
+                            {article.title}
+                        </CardTitle>
+                        <h2 className={"px-2 font-extralight"}>
+                            {article.description}
+                        </h2>
+                        <div className={"flex-1"}/>
+                        <div className={"px-2 flex justify-between"}>
+                            <div className={"flex gap-x-2 items-center"}>
+                                {article.tags?.map(tag => (
+                                    <Badge variant={"secondary"} className={"!bg-muted "} key={tag}>
+                                        {tag}
+                                    </Badge>
+                                ))}
+                            </div>
+                            <div>
+                                <Badge className={"text-muted text-md"}>
+                                    {dateFormat.format(article.date)}
+                                </Badge>
+                            </div>
+                        </div>
+                    </Card>
+                )
+            }
+        </>
+    );
+};
+
 
 function Hero() {
     return (
-
         <section id="hero" className="relative h-screen flex flex-col items-center justify-center overflow-hidden">
             <ParticleCanvas/>
 
@@ -35,88 +106,7 @@ function Hero() {
             </div>
 
             <div className={"flex gap-x-2 z-10 mt-8 items-start"}>
-                <Card
-                    className={"h-48 bg-primary cursor-pointer group border-[#2b3686] hover:border-[#4756b8] border-2 p-4 transition-all duration-200 ease-in-out text-white"}>
-                    <CardTitle
-                        className={"text-2xl group-hover:text-[#5EA1FF] transition-all duration-200 ease-in-out flex"}>
-                        <TerminalIcon color={"#4a63ff"} size={32} className={"mr-2"}/>
-                        Some title
-                    </CardTitle>
-                    <h2 className={"px-2 font-extralight"}>
-                        Some blurb for the article or some starting sentences
-                    </h2>
-                    <div className={"flex-1"}/>
-                    <div className={"px-2 flex justify-between"}>
-                        <div className={"flex gap-x-2 items-center"}>
-                            <Badge variant={"secondary"} className={"!bg-muted "}>
-                                Technology
-                            </Badge>
-                            <Badge variant={"secondary"} className={"!bg-muted "}>
-                                Catto
-                            </Badge>
-                        </div>
-                        <div>
-                            <Badge className={"text-muted text-md"}>
-                                12 Apr
-                            </Badge>
-                        </div>
-                    </div>
-                </Card>
-                <Card
-                    className={"h-40 bg-primary group cursor-pointer border-[#2b3686] hover:border-[#4756b8] border-2 p-4 transition-all duration-200 ease-in-out text-white"}>
-                    <CardTitle
-                        className={"text-2xl group-hover:text-[#5EA1FF] transition-all duration-200 ease-in-out flex"}>
-                        <TerminalIcon color={"#4a63ff"} size={32} className={"mr-2"}/>
-                        Some title
-                    </CardTitle>
-                    <h2 className={"px-2 font-extralight"}>
-                        Some blurb for the article or some starting sentences
-                    </h2>
-                    <div className={"flex-1"}/>
-                    <div className={"px-2 flex justify-between"}>
-                        <div className={"flex gap-x-2 items-center"}>
-                            <Badge variant={"secondary"} className={"!bg-muted "}>
-                                Technology
-                            </Badge>
-                            <Badge variant={"secondary"} className={"!bg-muted "}>
-                                Catto
-                            </Badge>
-                        </div>
-                        <div>
-                            <Badge className={"text-muted text-md"}>
-                                12 Apr
-                            </Badge>
-                        </div>
-                    </div>
-                </Card>
-                <Card
-                    className={"h-40 bg-primary group cursor-pointer border-[#2b3686] hover:border-[#4756b8] border-2 p-4 transition-all duration-200 ease-in-out text-white"}>
-                    <CardTitle
-                        className={"text-2xl group-hover:text-[#5EA1FF] transition-all duration-200 ease-in-out flex"}>
-                        <TerminalIcon color={"#4a63ff"} size={32} className={"mr-2"}/>
-                        Some title
-                    </CardTitle>
-                    <h2 className={"px-2 font-extralight"}>
-                        Some blurb for the article or some starting sentences
-                    </h2>
-                    <div className={"flex-1"}/>
-                    <div className={"px-2 flex justify-between"}>
-                        <div className={"flex gap-x-2 items-center"}>
-                            <Badge variant={"secondary"} className={"!bg-muted "}>
-                                Technology
-                            </Badge>
-                            <Badge variant={"secondary"} className={"!bg-muted "}>
-                                Catto
-                            </Badge>
-                        </div>
-                        <div>
-                            <Badge className={"text-muted text-md"}>
-                                12 Apr
-                            </Badge>
-                        </div>
-                    </div>
-                </Card>
-
+                <Articles/>
             </div>
 
 
