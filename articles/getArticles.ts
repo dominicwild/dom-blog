@@ -12,7 +12,7 @@ export type ArticleMetaData = {
 
 const articlesDirectory = "articles";
 
-export async function getRecentArticlesMetadata() {
+function fetchArticleDirectories() {
     const fileNames = fs.readdirSync(articlesDirectory)
     const articleDirs: string[] = []
 
@@ -23,16 +23,45 @@ export async function getRecentArticlesMetadata() {
             articleDirs.push(fileName)
         }
     }
+    return articleDirs;
+}
+
+async function getMetadataForArticle(dir: string) {
+    return (await import(`../${articlesDirectory}/${dir}/metadata`)).default as ArticleMetaData;
+}
+
+export async function getRecentArticlesMetadata() {
+    const articleDirs = fetchArticleDirectories();
 
     const articleMetadataPromises = articleDirs.map(async dir => {
         // Must be relative imports, absolute are not supported
-        const metadata = await import(`../${articlesDirectory}/${dir}/metadata`);
+        const metadata = await getMetadataForArticle(dir);
         return {
-            ...metadata.default as ArticleMetaData,
+            ...metadata,
             folder: dir
         }
     })
 
     const articleMetadata = await Promise.all(articleMetadataPromises);
     return articleMetadata.splice(0, 3);
+}
+
+export async function getArticleMetaData(folderName: string) {
+    if (!fs.existsSync(folderName)) {
+        return null;
+    }
+
+    const stat = fs.statSync(folderName)
+    if (!stat.isDirectory()) {
+        return null;
+    }
+
+    const metadata = await getMetadataForArticle(folderName);
+
+    const markdownFilePath = path.join(articlesDirectory, folderName, "article.md");
+    const markdownContent = fs.readFileSync(markdownFilePath, "utf8");
+    return {
+        ...metadata,
+        content: markdownContent
+    }
 }

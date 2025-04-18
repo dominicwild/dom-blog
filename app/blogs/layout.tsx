@@ -28,7 +28,7 @@ export default function RootLayout({children,}: Readonly<{
                     </div>
                 </div>
             </nav>
-            <div className={"container mx-auto"}>
+            <div className={"container mx-auto h-[90vh]"}>
                 {children}
             </div>
         </div>

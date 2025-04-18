@@ -26,7 +26,7 @@ export default function RootLayout({children,}: Readonly<{
         <body
             className={`${montserrat.className} antialiased !bg-[#1A2333] `}
         >
-        <div className="absolute inset-0 bg-gradient-to-b from-blue-600/10 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-blue-600/10 to-transparent pointer-events-none"></div>
         {children}
         </body>
 
