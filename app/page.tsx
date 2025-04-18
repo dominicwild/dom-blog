@@ -6,34 +6,6 @@ import {Card, CardTitle} from "@/components/ui/card";
 import {Badge} from "@/components/ui/badge";
 import {getRecentArticlesMetadata} from "@/articles/getArticles";
 
-type Article = {
-    title: string,
-    description: string,
-    icon?: string,
-    tags: string[],
-    date: Date,
-}
-const recentArticles: Article[] = [
-    {
-        title: "Some Title",
-        description: "Some blurb for the article or some starting sentences",
-        tags: ["Technology", "Catto"],
-        date: new Date("12 Apr 2025"),
-    },
-    {
-        title: "Some Title2",
-        description: "Some blurb for the article or some starting sentences",
-        tags: ["Technology", "Catto"],
-        date: new Date("12 Apr 2025"),
-    },
-    {
-        title: "Some Title3",
-        description: "Some blurb for the article or some starting sentences",
-        tags: ["Technology", "Catto"],
-        date: new Date("12 Apr 2025"),
-    }
-]
-
 const Articles = async () => {
     const dateFormat = Intl.DateTimeFormat('en-GB', {
         day: '2-digit',
