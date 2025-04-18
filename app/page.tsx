@@ -1,11 +1,11 @@
-import React from "react";
+import React, {ReactElement} from "react";
 import ParticleCanvas from "@/app/_components/ParticleCanvas";
 import TypeWriter from "@/app/_components/TypeWriter";
 import {ArrowDown, ArrowRightIcon, TerminalIcon} from "lucide-react";
 import {Card, CardTitle} from "@/components/ui/card";
 import {Badge} from "@/components/ui/badge";
 import {getRecentArticlesMetadata} from "@/articles/getArticles";
-import Link from "next/link";
+import Link, {LinkProps} from "next/link";
 
 const Articles = async () => {
     const dateFormat = Intl.DateTimeFormat('en-GB', {
@@ -19,42 +19,58 @@ const Articles = async () => {
         <>
             {
                 recentArticles.map((article, i) =>
-                    <Card
-                        className={`${i == 0 ? "h-48" : "h-40"} gap-y-0 w-[33%] bg-primary cursor-pointer group border-[#2b3686] hover:border-[#4756b8] border-2 p-4 transition-all duration-200 ease-in-out text-white`}
-                        key={article.title}
-                    >
-                        <CardTitle
-                            className={"h-9 text-2xl group-hover:text-[#5EA1FF] transition-all duration-200 ease-in-out flex"}>
-                            <TerminalIcon color={"#4a63ff"} size={32} className={"mr-2 h-8 w-[10%]"}/>
-                            <div className={"line-clamp-1 w-[85%]"}>
-                                {article.title}
-                            </div>
-                        </CardTitle>
-                        <h2 className={`px-2 font-extralight ${i == 0 ? "line-clamp-3" : "line-clamp-2"}`}>
-                            {article.description}
-                        </h2>
-                        <div className={"flex-1"}/>
-                        <div className={"px-2 flex justify-between"}>
-                            <div className={"flex gap-x-2 items-center"}>
-                                {article.tags?.splice(0, 3).map(tag => (
-                                    <Badge variant={"secondary"} className={"!bg-muted"} key={tag}>
-                                        {tag}
-                                    </Badge>
-                                ))}
-                            </div>
-                            <div>
-                                <Badge className={"text-muted text-md"}>
-                                    {dateFormat.format(article.date)}
-                                </Badge>
-                            </div>
-                        </div>
-                    </Card>
+                    <div key={article.title} className="w-[33%]">
+                        <Link href={`/blogs/${article.folder}`} className="block w-full h-full no-underline">
+                            <Card
+                                className={`${i == 0 ? "h-48" : "h-40"} gap-y-0 bg-primary cursor-pointer group border-[#2b3686] hover:border-[#4756b8] border-2 p-4 transition-all duration-200 ease-in-out text-white`}
+                                key={article.title}
+                            >
+                                <CardTitle
+                                    className={"h-9 text-2xl group-hover:text-[#5EA1FF] transition-all duration-200 ease-in-out flex"}>
+                                    <TerminalIcon color={"#4a63ff"} size={32} className={"mr-2 h-8 w-[10%]"}/>
+                                    <div className={"line-clamp-1 w-[85%]"}>
+                                        {article.title}
+                                    </div>
+                                </CardTitle>
+                                <h2 className={`px-2 font-extralight ${i == 0 ? "line-clamp-3" : "line-clamp-2"}`}>
+                                    {article.description}
+                                </h2>
+                                <div className={"flex-1"}/>
+                                <div className={"px-2 flex justify-between"}>
+                                    <div className={"flex gap-x-2 items-center"}>
+                                        {article.tags?.splice(0, 3).map(tag => (
+                                            <Badge variant={"secondary"} className={"!bg-muted"} key={tag}>
+                                                {tag}
+                                            </Badge>
+                                        ))}
+                                    </div>
+                                    <div>
+                                        <Badge className={"text-muted text-md"}>
+                                            {dateFormat.format(article.date)}
+                                        </Badge>
+                                    </div>
+                                </div>
+                            </Card>
+                        </Link>
+                    </div>
                 )
             }
         </>
     );
 };
 
+
+const UnderlineLink = (props: { children: ReactElement, className: string } & LinkProps) => {
+    const {children, className, ...otherProps} = props;
+    return (
+        <div
+            className={`${className} relative inline-block after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-300 hover:after:w-full`}>
+            <Link {...otherProps}>
+                {children}
+            </Link>
+        </div>
+    )
+}
 
 function Hero() {
     return (
@@ -84,25 +100,25 @@ function Hero() {
             </div>
 
             <div className={"z-10 mx-[20%]"}>
+
                 <div className={"mt-6 mb-2 flex"}>
                     <div className={"flex-1"}/>
-                    <div
-                        className={"text-blue-300 relative inline-block after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-300 hover:after:w-full"}>
-                        <Link href={"/blogs"} className={" flex "}>
+                    <UnderlineLink className={"text-blue-300"} href={"/blogs"}>
+                        <div className={" flex "}>
                             View all
                             <div className={"flex items-center"}>
                                 <ArrowRightIcon className={"h-[70%]"}/>
                             </div>
-                        </Link>
-                    </div>
+                        </div>
+                    </UnderlineLink>
                     <div className={"pr-4"}/>
                 </div>
+
                 <div className={"flex gap-x-2 mt-1 items-start justify-between"}>
                     <Articles/>
                 </div>
             </div>
         </section>
-
     );
 }
 
