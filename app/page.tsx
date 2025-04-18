@@ -4,6 +4,7 @@ import TypeWriter from "@/app/_components/TypeWriter";
 import {ArrowDown, TerminalIcon} from "lucide-react";
 import {Card, CardTitle} from "@/components/ui/card";
 import {Badge} from "@/components/ui/badge";
+import {getRecentArticlesMetadata} from "@/articles/getArticles";
 
 type Article = {
     title: string,
@@ -33,33 +34,37 @@ const recentArticles: Article[] = [
     }
 ]
 
-const Articles = () => {
+const Articles = async () => {
     const dateFormat = Intl.DateTimeFormat('en-GB', {
         day: '2-digit',
         month: 'short',
     })
+
+    const recentArticles = await getRecentArticlesMetadata();
 
     return (
         <>
             {
                 recentArticles.map((article, i) =>
                     <Card
-                        className={`${i == 0 ? "h-48" : "h-40"} bg-primary cursor-pointer group border-[#2b3686] hover:border-[#4756b8] border-2 p-4 transition-all duration-200 ease-in-out text-white`}
+                        className={`${i == 0 ? "h-48" : "h-40"} gap-y-0 w-[33%] bg-primary cursor-pointer group border-[#2b3686] hover:border-[#4756b8] border-2 p-4 transition-all duration-200 ease-in-out text-white`}
                         key={article.title}
                     >
                         <CardTitle
-                            className={"text-2xl group-hover:text-[#5EA1FF] transition-all duration-200 ease-in-out flex"}>
-                            <TerminalIcon color={"#4a63ff"} size={32} className={"mr-2"}/>
-                            {article.title}
+                            className={" h-9 text-2xl group-hover:text-[#5EA1FF] transition-all duration-200 ease-in-out flex"}>
+                            <TerminalIcon color={"#4a63ff"} size={32} className={"mr-2 h-8 w-[10%]"}/>
+                            <div className={"line-clamp-1 w-[85%]"}>
+                                {article.title}
+                            </div>
                         </CardTitle>
-                        <h2 className={"px-2 font-extralight"}>
+                        <h2 className={`px-2 font-extralight ${i == 0 ? "line-clamp-3" : "line-clamp-2"}`}>
                             {article.description}
                         </h2>
                         <div className={"flex-1"}/>
                         <div className={"px-2 flex justify-between"}>
                             <div className={"flex gap-x-2 items-center"}>
-                                {article.tags?.map(tag => (
-                                    <Badge variant={"secondary"} className={"!bg-muted "} key={tag}>
+                                {article.tags?.splice(0, 3).map(tag => (
+                                    <Badge variant={"secondary"} className={"!bg-muted"} key={tag}>
                                         {tag}
                                     </Badge>
                                 ))}
@@ -105,7 +110,7 @@ function Hero() {
                 {/*</div>*/}
             </div>
 
-            <div className={"flex gap-x-2 z-10 mt-8 items-start"}>
+            <div className={"flex gap-x-2 z-10 mt-8 items-start mx-[20%] justify-between"}>
                 <Articles/>
             </div>
 
