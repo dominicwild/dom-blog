@@ -25,8 +25,6 @@ export async function getRecentArticlesMetadata() {
     }
 
     const articleMetadataPromises = articleDirs.map(async dir => {
-        const fullPath = path.join("..", dir, "metadata");
-        console.log(fullPath)
         // Must be relative imports, absolute are not supported
         const metadata = await import(`../${articlesDirectory}/${dir}/metadata`);
         return {
