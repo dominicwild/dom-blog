@@ -2,6 +2,7 @@ import React from 'react';
 import ReactMarkdown, {Components} from "react-markdown";
 import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter';
 import {oneDark} from 'react-syntax-highlighter/dist/esm/styles/prism';
+import remarkGfm from "remark-gfm";
 
 type MarkdownProps = {
     children: string,
@@ -50,6 +51,26 @@ const Markdown = ({
         blockquote: ({node, ...props}) => (
             <blockquote className={"border-l-4 pl-4 italic text-gray-400"} {...props}  />
         ),
+        table: ({node, ...props}) => (
+            <div className="overflow-x-auto my-8 rounded">
+                <table className="w-full border-collapse bg-[#0A0F1C]" {...props} />
+            </div>
+        ),
+        thead: ({node, ...props}) => (
+            <thead className="bg-slate-800/50 border-b border-slate-700" {...props} />
+        ),
+        tbody: ({node, ...props}) => (
+            <tbody className="divide-y divide-slate-800" {...props} />
+        ),
+        tr: ({node, ...props}) => (
+            <tr className="hover:bg-slate-800/30 transition-colors" {...props} />
+        ),
+        th: ({node, ...props}) => (
+            <th className="px-6 py-4 text-left text-sm font-semibold text-white" {...props} />
+        ),
+        td: ({node, ...props}) => (
+            <td className="px-6 py-4 text-sm text-slate-300" {...props} />
+        ),
         code: ({node, className, children, ...props}) => {
             const match = /language-(\w+)/.exec(className || '');
             const code = String(children).replace(/\n$/, '')
@@ -69,7 +90,9 @@ const Markdown = ({
         },
     };
     return (
-        <ReactMarkdown components={markdownComponents}>
+        <ReactMarkdown components={markdownComponents}
+                       remarkPlugins={[remarkGfm]}
+        >
             {children}
         </ReactMarkdown>
     );
