@@ -1,11 +1,12 @@
-import React, {ReactElement} from "react";
+import React from "react";
 import ParticleCanvas from "@/app/_components/ParticleCanvas";
 import TypeWriter from "@/app/_components/TypeWriter";
-import {ArrowDown, ArrowRightIcon, TerminalIcon} from "lucide-react";
+import {ArrowRightIcon, TerminalIcon} from "lucide-react";
 import {Card, CardTitle} from "@/components/ui/card";
 import {Badge} from "@/components/ui/badge";
 import {getRecentArticlesMetadata} from "@/articles/getArticles";
-import Link, {LinkProps} from "next/link";
+import Link from "next/link";
+import {UnderlineLink} from "@/app/_components/UnderlineLink";
 
 const Articles = async () => {
     const dateFormat = Intl.DateTimeFormat('en-GB', {
@@ -59,18 +60,6 @@ const Articles = async () => {
     );
 };
 
-
-const UnderlineLink = (props: { children: ReactElement, className: string } & LinkProps) => {
-    const {children, className, ...otherProps} = props;
-    return (
-        <div
-            className={`${className} relative inline-block after:absolute after:left-0 after:bottom-0 after:h-[2px] after:w-0 after:bg-current after:transition-all after:duration-300 hover:after:w-full`}>
-            <Link {...otherProps}>
-                {children}
-            </Link>
-        </div>
-    )
-}
 
 function Hero() {
     return (
