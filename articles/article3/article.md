@@ -4,7 +4,7 @@
 
 > "In a world of breakfast foods, justice is served cold... like milk." — Becky Hamsterfield
 
-![Hamster detective with magnifying glass](https://images.unsplash.com/photo-1425082661705-1834bfd09dca?ixlib=rb-4.0.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400)
+![Hamster detective with magnifying glass](/articles/hamster/ham.png)
 
 ### CHAPTER 1: THE SETUP
 
@@ -78,7 +78,7 @@ seeds—the black oil variety, not those striped economy ones.
 
 "I'm on the case," Becky declared, adjusting her paperclip bow tie. "No marshmallow goes missing on my watch."
 
-![Colorful cereal marshmallows](https://images.unsplash.com/photo-1490618087482-57287e440a44?ixlib=rb-4.0.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400)
+![Colorful cereal marshmallows](/articles/hamster/colour.png)
 
 ***
 
@@ -176,7 +176,7 @@ It was the spoon. THE SPOON!
 "Wait a minute," Becky whispered, her detective instincts tingling. She scurried over to the utensil drawer for a closer
 look.
 
-![Silver spoon with reflection](https://images.unsplash.com/photo-1574155376612-bfa4ed8aabfd?ixlib=rb-4.0.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400)
+![Silver spoon with reflection](/articles/hamster/spoon.png)
 
 The polished curve of the spoon revealed something extraordinary—a reflection of the missing marshmallow heart! But that
 could only mean...
@@ -225,7 +225,7 @@ session. The Oat Collective wrote a strongly worded letter about being unfairly 
 And Becky? She returned to her cereal box office, replaced her evidence board, and began typing her memoirs on a
 miniature typewriter made from staples and pushpins:
 
-![Vintage typewriter](https://images.unsplash.com/photo-1518873197019-4bdb478c7b67?ixlib=rb-4.0.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400)
+![Vintage typewriter](/articles/hamster/typewriter.png)
 
 ---
 
@@ -261,7 +261,7 @@ And sometimes, just sometimes, a hamster in a cereal box is exactly the detectiv
 > "In the breakfast drawer of life, we're all just looking for our missing pieces, even if they were there all along."
 > —Becky Hamsterfield
 
-![Hamster sleeping in tiny bed](https://images.unsplash.com/photo-1548767797-d8c844163c4c?ixlib=rb-4.0.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400)
+![Hamster sleeping in tiny bed](/articles/hamster/bed.png)
 
 ***
 
