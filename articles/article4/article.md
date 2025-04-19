@@ -420,7 +420,7 @@ Comedian's Journey from Tank to Tank* spent 47 weeks on the New York Times Bests
 <h2>THE END?</h2>
 <p><i>(Stanley insists there's no such thing as "The End" in comedy—just a temporary pause while he thinks of his next joke)</i></p>
 
-![Goldfish in spotlight](https://images.unsplash.com/photo-1583090888262-df62dd908f96?ixlib=rb-4.0.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400)
+![Goldfish in spotlight](/articles/fish/spotlight.png)
 
 <div style="margin-top: 30px; font-size: 0.8em; color: #777;">
 <p>© 2023 Stanley Entertainment, Inc. All Rights Reserved.</p>
