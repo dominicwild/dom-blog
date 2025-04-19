@@ -4,17 +4,34 @@ import TypeWriter from "@/app/_components/TypeWriter";
 import {ArrowRightIcon, TerminalIcon} from "lucide-react";
 import {Card, CardTitle} from "@/components/ui/card";
 import {Badge} from "@/components/ui/badge";
-import {getRecentArticlesMetadata} from "@/articles/getArticles";
+import {ArticleMetaData, getRecentArticlesMetadata, RecentArticle, RecentArticles} from "@/articles/getArticles";
 import Link from "next/link";
 import {UnderlineLink} from "@/app/_components/UnderlineLink";
+import {placeholderTitle} from "@/app/constant";
 
 function ArticleCard(props: {
-    article: Awaited<{ title: string; description: string; icon?: string; tags: string[]; date: Date; folder: string }>,
+    article: ArticleCardData,
     i: number,
     dateFormat: Intl.DateTimeFormat
 }) {
+    const {article} = props;
+
+    if (!("folder" in article)) {
+        return <div className="w-[33%]">
+            <div className="block w-full h-full no-underline">
+                <Card
+                    className={`${props.i == 0 ? "h-48" : "h-40"} gap-y-0 bg-primary cursor-pointer group border-[#2b3686] hover:border-[#4756b8] border-2 p-4 transition-all duration-200 ease-in-out text-white items-center justify-center`}
+                >
+                    <div className={"text-muted-foreground text-2xl rotate-12 text-center"}>
+                        More coming soon
+                    </div>
+                </Card>
+            </div>
+        </div>
+    }
+
     return <div className="w-[33%]">
-        <Link href={`/blogs/${props.article.folder}`} className="block w-full h-full no-underline">
+        <Link href={`/blogs/${article.folder}`} className="block w-full h-full no-underline">
             <Card
                 className={`${props.i == 0 ? "h-48" : "h-40"} gap-y-0 bg-primary cursor-pointer group border-[#2b3686] hover:border-[#4756b8] border-2 p-4 transition-all duration-200 ease-in-out text-white`}
             >
@@ -22,16 +39,16 @@ function ArticleCard(props: {
                     className={"h-9 text-2xl group-hover:text-[#5EA1FF] transition-all duration-200 ease-in-out flex"}>
                     <TerminalIcon color={"#4a63ff"} size={32} className={"mr-2 h-8 w-[10%]"}/>
                     <div className={"line-clamp-1 w-[85%]"}>
-                        {props.article.title}
+                        {article.title}
                     </div>
                 </CardTitle>
                 <h2 className={`px-2 font-extralight ${props.i == 0 ? "line-clamp-3" : "line-clamp-2"}`}>
-                    {props.article.description}
+                    {article.description}
                 </h2>
                 <div className={"flex-1"}/>
                 <div className={"px-2 flex justify-between"}>
                     <div className={"flex gap-x-2 items-center"}>
-                        {props.article.tags?.splice(0, 3).map(tag => (
+                        {article.tags?.splice(0, 3).map(tag => (
                             <Badge variant={"secondary"} className={"!bg-muted"} key={tag}>
                                 {tag}
                             </Badge>
@@ -39,7 +56,7 @@ function ArticleCard(props: {
                     </div>
                     <div>
                         <Badge className={"text-muted text-md"}>
-                            {props.dateFormat.format(props.article.date)}
+                            {props.dateFormat.format(article.date)}
                         </Badge>
                     </div>
                 </div>
@@ -48,13 +65,21 @@ function ArticleCard(props: {
     </div>;
 }
 
+type ArticleCardData = Awaited<RecentArticles>[number] | { title: string }
+
 const Articles = async () => {
     const dateFormat = Intl.DateTimeFormat('en-GB', {
         day: '2-digit',
         month: 'short',
     })
 
-    const recentArticles = await getRecentArticlesMetadata();
+    const recentArticles: (ArticleCardData)[] = await getRecentArticlesMetadata();
+
+    if (recentArticles.length !== 3) {
+        for (let i = recentArticles.length; i < 3; i++) {
+            recentArticles.push({title: placeholderTitle + i})
+        }
+    }
 
     return (
         <>

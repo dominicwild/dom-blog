@@ -15,6 +15,7 @@ export type ArticleMetaData = {
     tags: string[],
     image?: string,
     date: Date,
+    show?: Boolean
 }
 
 const articlesDirectory = "articles";
@@ -80,6 +81,9 @@ async function getMetadataForArticle(dir: string) {
     return (await import(`../${articlesDirectory}/${dir}/metadata`)).default as ArticleMetaData;
 }
 
+export type RecentArticles = ReturnType<typeof getRecentArticlesMetadata>
+export type RecentArticle = Awaited<ReturnType<typeof getRecentArticlesMetadata>>[number]
+
 export async function getRecentArticlesMetadata() {
     const articleDirs = fetchArticleDirectories();
 
@@ -93,7 +97,7 @@ export async function getRecentArticlesMetadata() {
     })
 
     const articleMetadata = await Promise.all(articleMetadataPromises);
-    return articleMetadata.splice(0, 3);
+    return articleMetadata.filter(metadata => metadata.show).splice(0, 3);
 }
 
 export async function getArticleMetaData(folderName: string) {

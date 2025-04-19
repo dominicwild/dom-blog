@@ -69,6 +69,8 @@ const PageContent = ({blogs}: { blogs: Awaited<ReturnType<typeof getArticleCardD
         day: 'numeric',
     });
 
+    const blogsToShow = blogs.filter(blog => blog.show)
+
     return (
         <main className="flex-grow container mx-auto px-4 py-12 text-white">
             <motion.div
@@ -85,7 +87,7 @@ const PageContent = ({blogs}: { blogs: Awaited<ReturnType<typeof getArticleCardD
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    {blogs.map((blog, index) => (
+                    {blogsToShow.map((blog, index) => (
                         <motion.article
                             key={blog.title}
                             initial={{opacity: 0, y: 20}}
