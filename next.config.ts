@@ -6,12 +6,6 @@ const nextConfig: NextConfig = {
         remotePatterns: [new URL('https://cdn.jsdelivr.net/**')],
     },
     webpack(config, options) {
-        // Add raw-loader for markdown files
-        config.module.rules.push({
-            test: /\.md$/,
-            use: 'raw-loader',
-        });
-
         // Make all files in the articles directory available for import
         config.module.rules.push({
             test: /articles\/.*\.(ts|js|json|md)$/,
