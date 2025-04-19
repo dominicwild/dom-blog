@@ -20,7 +20,7 @@ function ArticleCard(props: {
         return <div className="w-[33%]">
             <div className="block w-full h-full no-underline">
                 <Card
-                    className={`${props.i == 0 ? "h-48" : "h-40"} gap-y-0 bg-primary cursor-pointer group border-[#2b3686] hover:border-[#4756b8] border-2 p-4 transition-all duration-200 ease-in-out text-white items-center justify-center`}
+                    className={`${props.i == 0 ? "h-48" : "h-40"} gap-y-0 bg-primary border-[#2b3686]  border-2 p-4 transition-all duration-200 ease-in-out text-white items-center justify-center`}
                 >
                     <div className={"text-muted-foreground text-2xl rotate-12 text-center"}>
                         More coming soon
