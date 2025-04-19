@@ -40,7 +40,7 @@ His translations soon became legendary:
 
 Gerald would stand in elevators for hours, nodding sagely and taking notes with a pencil held awkwardly in his mouth.
 
-![Gerald in an elevator wearing his spaghetti cape, holding a notepad in his mouth, surrounded by confused humans](/articles/llama/spaghetti.png)
+![Gerald in an elevator wearing his spaghetti cape, holding a notepad in his mouth, surrounded by confused humans](/articles/llama/wear-spaghetti.png)
 
 ---
 
@@ -153,12 +153,12 @@ and a feature in *Modern Llama* magazine.
 
 ### Testimonials
 
-<div style="background-color: #f8f8f8; padding: 10px; border-left: 4px solid #ddd;">
+<div style="background-color: #5f5f5f; padding: 10px; border-left: 4px solid #ddd;">
 <em>"I never thought I'd enjoy eating my shoelaces, but here we are. Five stars!"</em><br>
 — Marty the Zebra
 </div>
 
-<div style="background-color: #f8f8f8; padding: 10px; border-left: 4px solid #ddd; margin-top: 10px;">
+<div style="background-color: #5f5f5f; padding: 10px; border-left: 4px solid #ddd; margin-top: 10px;">
 <em>"The perfect snack for when you're on the run. Literally."</em><br>
 — Speedy the Cheetah
 </div>
@@ -179,7 +179,7 @@ occasionally mystifies art critics and makes children giggle.
 Gerald's next project involves teaching flamingos to perform synchronized swimming routines to the sound of vending
 machines dispensing snacks, but that's a story for another day...
 
-![Gerald standing proudly with his edible shoelace invention, surrounded by admiring zoo animals and his raccoon judges](/articles/llama/shoes.png)
+![Gerald standing proudly with his edible shoelace invention, surrounded by admiring zoo animals and his raccoon judges](/articles/llama/success.png)
 
 ***
 
