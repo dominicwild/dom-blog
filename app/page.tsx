@@ -4,7 +4,7 @@ import TypeWriter from "@/app/_components/TypeWriter";
 import {ArrowRightIcon, TerminalIcon} from "lucide-react";
 import {Card, CardTitle} from "@/components/ui/card";
 import {Badge} from "@/components/ui/badge";
-import {ArticleMetaData, getRecentArticlesMetadata, RecentArticle, RecentArticles} from "@/articles/getArticles";
+import {getRecentArticlesMetadata, RecentArticles} from "@/articles/getArticles";
 import Link from "next/link";
 import {UnderlineLink} from "@/app/_components/UnderlineLink";
 import {placeholderTitle} from "@/app/constant";
