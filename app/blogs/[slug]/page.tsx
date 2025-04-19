@@ -1,18 +1,25 @@
-import React from 'react';
-import {getArticleMetaData} from "@/articles/getArticles";
+import React, {Suspense, use} from 'react';
+import {getAllArticleParams, getArticleMetaData} from "@/articles/getArticles";
 import NotFound from "@/app/not-found";
-import {ArrowLeft, Calendar, Tag} from "lucide-react";
-import Link from "next/link";
+import {Calendar, Tag} from "lucide-react";
 import Markdown from "@/app/_components/Markdown";
 import {Badge} from "@/components/ui/badge";
+import {Spinner} from "@/components/ui/spinner";
 
-const Page = async ({params}: { params: Promise<Record<string, string>> }) => {
-    const {slug} = await params;
-    console.log("params", params);
-    const articleMetadata = await getArticleMetaData(slug)
+
+export async function generateStaticParams() {
+    const blogs = await getAllArticleParams();
+
+    return blogs.map(folderName => ({
+        slug: folderName,
+    }))
+}
+
+async function Article({slug}: { slug: string }) {
+    const articleMetadata = await getArticleMetaData(slug);
 
     if (!articleMetadata) {
-        return <NotFound/>
+        return <NotFound/>;
     }
 
     const dateFormatter = new Intl.DateTimeFormat('en-US', {
@@ -56,6 +63,16 @@ const Page = async ({params}: { params: Promise<Record<string, string>> }) => {
             </div>
         </div>
     );
-};
+}
 
-export default Page;
+export default async function Page({params}: { params: Promise<Record<string, string>> }) {
+    return (
+        <Suspense fallback={
+            <div className="flex justify-center items-center h-screen w-full">
+                <Spinner size="xl" variant="primary"/>
+            </div>
+        }>
+            <Article slug={(await params).slug}/>
+        </Suspense>
+    );
+}

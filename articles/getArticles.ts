@@ -26,6 +26,10 @@ function fetchArticleDirectories() {
     return articleDirs;
 }
 
+export async function getAllArticleParams() {
+    return fetchArticleDirectories();
+}
+
 async function getMetadataForArticle(dir: string) {
     return (await import(`../${articlesDirectory}/${dir}/metadata`)).default as ArticleMetaData;
 }
