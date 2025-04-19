@@ -4,7 +4,7 @@
 
 ## *A Fish Out of Water in the Comedy World*
 
-![Goldfish in bowl](https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?ixlib=rb-4.0.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400)
+![Goldfish in bowl](/articles/fish/fish.png)
 
 </div>
 
@@ -56,7 +56,7 @@ His chance came when he was purchased by Dr. Michael "The Molar" Finkelstein for
 > —Stanley the Goldfish, *Interview with Fish Fancy Magazine*
 
 <p align="center">
-<img src="https://images.unsplash.com/photo-1544551763-92ab472cad5d?ixlib=rb-4.0.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400" alt="Goldfish closeup" width="250px" style="border-radius: 50%; border: 3px solid gold;">
+<img src="https://cdn.jsdelivr.net/gh/dominicwild/dom-blog@master/public/articles/fish/fish-close.png" alt="Goldfish closeup" width="250px" style="border-radius: 50%; border: 3px solid gold;">
 </p>
 
 **STANLEY FACT #1:** Stanley's original name was "Fish #7" at Pete's Pet Emporium until he renamed himself after Stanley
@@ -202,7 +202,7 @@ excavation, burrowing..."
 </div>
 
 <figure style="text-align: center;">
-<img src="https://images.unsplash.com/photo-1571752726703-5e7d1f6a986d?ixlib=rb-4.0.0&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400" alt="Dental office" style="max-width: 100%; border-radius: 10px;">
+<img src="https://cdn.jsdelivr.net/gh/dominicwild/dom-blog@master/public/articles/fish/dentist.png" alt="Dental office" style="max-width: 100%; border-radius: 10px;">
 <figcaption><i>Recreation of Dr. Finkelstein's office where Stanley's career began</i></figcaption>
 </figure>
 
@@ -450,52 +450,3 @@ Comedian's Journey from Tank to Tank* spent 47 weeks on the New York Times Bests
 <span class="bubble" style="animation-delay: 1s;">Ha!</span>
 <span class="bubble" style="animation-delay: 2s;">Fin-tastic!</span>
 </div>
-
-I've created an extensively formatted markdown story that really pushes the boundaries of what's possible with markdown!
-This expanded version of Stanley's story transforms the brief original into a rich, humorous narrative while showcasing
-advanced markdown techniques.
-
-Here's how I've pushed markdown to its limits:
-
-### Advanced Layout Techniques
-
-- **Flexbox-style layouts** with columns and cards
-- **Timeline visualization** for storytelling
-- **Custom styling** using inline CSS (which works in some markdown renderers)
-- **Fixed positioning** elements that appear to float over the content
-- **Grid-like arrangements** for statistics and metrics
-
-### Visual Enhancements
-
-- **Simulated animations** (fish swimming, bubbles floating)
-- **Custom backgrounds** and colored sections
-- **Styled tables** with enhanced formatting
-- **Decorative dividers** with gradient coloring
-- **Card-like components** for content organization
-
-### Interactive Elements
-
-- **Collapsible sections** using details/summary tags
-- **Simulated tabs** for organizing content
-- **Interactive joke book** with multi-column layout
-- **Expandable transcripts** for saving space
-
-### Typographical Flourishes
-
-- **Pull quotes** with stylized formatting
-- **Text effects** like rotation and shadows
-- **Custom blockquotes** with enhanced styling
-- **Mixed text alignments** for visual interest
-- **Decorative emoji usage** as visual accents
-
-### Narrative Expansions
-
-- Developed Stanley's character arc from pet store to stardom
-- Created an entire universe around a dental office fish tank
-- Added supporting characters and backstory
-- Included a collection of fish-themed jokes and a famous catchphrase
-- Developed a "rider" of performance requirements for comedy effect
-
-The story maintains the whimsical tone of the original while expanding it into a comprehensive narrative with chapters,
-visual elements, and comedic details. It's presented in a visually rich format that demonstrates the creative potential
-of markdown when pushed to its limits!
