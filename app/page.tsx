@@ -1,20 +1,20 @@
 import React from "react";
 import ParticleCanvas from "@/app/_components/ParticleCanvas";
 import TypeWriter from "@/app/_components/TypeWriter";
-import {ArrowRightIcon, TerminalIcon} from "lucide-react";
-import {Card, CardTitle} from "@/components/ui/card";
-import {Badge} from "@/components/ui/badge";
-import {getRecentArticlesMetadata, RecentArticles} from "@/articles/getArticles";
+import { ArrowRightIcon, TerminalIcon } from "lucide-react";
+import { Card, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { getRecentArticlesMetadata, RecentArticles } from "@/articles/getArticles";
 import Link from "next/link";
-import {UnderlineLink} from "@/app/_components/UnderlineLink";
-import {placeholderTitle} from "@/app/constant";
+import { UnderlineLink } from "@/app/_components/UnderlineLink";
+import { placeholderTitle } from "@/app/constant";
 
 function ArticleCard(props: {
     article: ArticleCardData,
     i: number,
     dateFormat: Intl.DateTimeFormat
 }) {
-    const {article} = props;
+    const { article } = props;
 
     if (!("folder" in article)) {
         return <div className="w-[33%]">
@@ -37,7 +37,7 @@ function ArticleCard(props: {
             >
                 <CardTitle
                     className={"h-9 text-2xl group-hover:text-[#5EA1FF] transition-all duration-200 ease-in-out flex"}>
-                    <TerminalIcon color={"#4a63ff"} size={32} className={"mr-2 h-8 w-[10%]"}/>
+                    <TerminalIcon color={"#4a63ff"} size={32} className={"mr-2 h-8 w-[10%]"} />
                     <div className={"line-clamp-1 w-[85%]"}>
                         {article.title}
                     </div>
@@ -45,10 +45,10 @@ function ArticleCard(props: {
                 <h2 className={`px-2 font-extralight ${props.i == 0 ? "line-clamp-3" : "line-clamp-2"}`}>
                     {article.description}
                 </h2>
-                <div className={"flex-1"}/>
+                <div className={"flex-1"} />
                 <div className={"px-2 flex justify-between"}>
                     <div className={"flex gap-x-2 items-center"}>
-                        {article.tags?.splice(0, 3).map(tag => (
+                        {article.tags?.slice(0, 3).map(tag => (
                             <Badge variant={"secondary"} className={"!bg-muted"} key={tag}>
                                 {tag}
                             </Badge>
@@ -77,7 +77,7 @@ const Articles = async () => {
 
     if (recentArticles.length !== 3) {
         for (let i = recentArticles.length; i < 3; i++) {
-            recentArticles.push({title: placeholderTitle + i})
+            recentArticles.push({ title: placeholderTitle + i })
         }
     }
 
@@ -85,7 +85,7 @@ const Articles = async () => {
         <>
             {
                 recentArticles.map((article, i) =>
-                    <ArticleCard key={article.title} article={article} i={i} dateFormat={dateFormat}/>
+                    <ArticleCard key={article.title} article={article} i={i} dateFormat={dateFormat} />
                 )
             }
         </>
@@ -96,7 +96,7 @@ const Articles = async () => {
 function Hero() {
     return (
         <section id="hero" className="relative h-screen flex flex-col items-center justify-center overflow-hidden">
-            <ParticleCanvas/>
+            <ParticleCanvas />
 
             <div className="mx-auto z-10 w-[50%] flex items-center justify-center flex-col">
                 <div
@@ -123,20 +123,20 @@ function Hero() {
             <div className={"z-10 mx-[20%]"}>
 
                 <div className={"mt-6 mb-2 flex"}>
-                    <div className={"flex-1"}/>
+                    <div className={"flex-1"} />
                     <UnderlineLink className={"text-blue-300"} href={"/blogs"}>
                         <div className={" flex "}>
                             View all
                             <div className={"flex items-center"}>
-                                <ArrowRightIcon className={"h-[70%]"}/>
+                                <ArrowRightIcon className={"h-[70%]"} />
                             </div>
                         </div>
                     </UnderlineLink>
-                    <div className={"pr-4"}/>
+                    <div className={"pr-4"} />
                 </div>
 
                 <div className={"flex gap-x-2 mt-1 items-start justify-between"}>
-                    <Articles/>
+                    <Articles />
                 </div>
             </div>
         </section>
@@ -147,7 +147,7 @@ export default function Home() {
 
     return (
         <div>
-            <Hero/>
+            <Hero />
         </div>
     );
 }
