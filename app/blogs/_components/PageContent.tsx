@@ -52,7 +52,7 @@ const PageContent = ({blogs}: { blogs: Awaited<ReturnType<typeof getArticleCardD
                                             className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"/>
                                         <div
                                             className="absolute top-4 left-4 bg-blue-600 text-white text-xs font-medium px-2 py-1 rounded">
-                                            {blog.tags[0]}
+                                            {blog?.tags[0]}
                                         </div>
                                     </div>
                                     <div className="flex flex-col flex-grow p-6">

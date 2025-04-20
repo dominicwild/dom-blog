@@ -74,7 +74,8 @@ export async function getArticleCardData() {
             }
         })
 
-    return await Promise.all(cardData)
+    const cardDatas = await Promise.all(cardData);
+    return cardDatas
 }
 
 async function getMetadataForArticle(dir: string) {
