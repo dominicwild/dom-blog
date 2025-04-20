@@ -5,7 +5,8 @@ const metadata: ArticleMetaData = {
     description: "TDD, should we use it for everything?",
     tags: ["TDD", "Practices", "Testing"],
     date: new Date("20 Apr 2025"),
-    // image: "/articles/fish/fish.png",
+    image: "https://supernotes-resources.s3.amazonaws.com/image-uploads/1253298b-de07-4156-8e98-1403cb636141--image.png",
+    show: true
 }
 
 export default metadata
