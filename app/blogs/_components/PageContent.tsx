@@ -2,65 +2,9 @@
 
 import React from 'react';
 import Link from 'next/link';
-import {Calendar, Tag, Search, Clock, ArrowRight} from 'lucide-react';
+import {ArrowRight, Calendar, Clock} from 'lucide-react';
 import {motion} from 'motion/react';
-import Image from "next/image"
 import {getArticleCardData} from "@/articles/getArticles";
-
-const blogs = [
-    {
-        id: 'article1',
-        title: 'Larry the Pizza Heist Pigeon',
-        description: 'Larry, a monocled pigeon, aspires to be the city\'s top pizza thief but ends up forming an unexpected alliance.',
-        image: '/articles/pigeon/monocle-pigeon.png',
-        date: new Date('2025-04-12'),
-        tags: ['pigeon', 'pizza', 'comedy', 'urban', 'animals'],
-        folder: 'article1'
-    },
-    {
-        id: 'article2',
-        title: 'Gerald\'s Spaghetti Cape Adventures',
-        description: 'A cape-wearing llama decodes elevator music and organizes bizarre dance-offs with raccoons.',
-        image: '/articles/llama/spaghetti.png',
-        date: new Date('2025-04-10'),
-        tags: ['llama', 'spaghetti', 'dance', 'absurd', 'animals'],
-        folder: 'article2'
-    },
-    {
-        id: 'article3',
-        title: 'Detective Hamster and the Cereal Box Mystery',
-        description: 'A hamster detective hunts for a missing marshmallow inside a cereal box with a twist ending.',
-        image: '/articles/hamster/detective.png', // Mock image path
-        date: new Date('2025-04-08'),
-        tags: ['hamster', 'detective', 'mystery', 'cereal', 'humor'],
-        folder: 'article3'
-    },
-    {
-        id: 'article4',
-        title: 'Stanley the Stand-up Goldfish',
-        description: 'A goldfish trapped in a dentist\'s office goes viral with his bubble-based comedy routine.',
-        date: new Date('2025-04-05'),
-        tags: ['goldfish', 'comedy', 'aquarium', 'viral', 'animals'],
-        folder: 'article4'
-    },
-    {
-        id: 'article5',
-        title: 'The Owl Who Couldn\'t Give a Hoot',
-        description: 'An apathetic owl becomes an accidental life coach for forest creatures with existential crises.',
-        date: new Date('2025-04-01'),
-        tags: ['owl', 'philosophy', 'forest', 'coaching', 'humor'],
-        folder: 'article5'
-    },
-    {
-        id: 'article6',
-        title: 'Submarine Squirrels: The Nutty Depths',
-        description: 'A team of engineering squirrels builds a working acorn-powered submarine to explore a park pond.',
-        image: '/articles/squirrel/submarine.png', // Mock image path
-        date: new Date('2025-03-28'),
-        tags: ['squirrel', 'engineering', 'adventure', 'pond', 'innovation'],
-        folder: 'article6'
-    }
-];
 
 const PageContent = ({blogs}: { blogs: Awaited<ReturnType<typeof getArticleCardData>> }) => {
     const dateFormatter = new Intl.DateTimeFormat('en-GB', {
