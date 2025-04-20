@@ -1,3 +1,5 @@
+# Introduction
+
 My views on TDD have shifted considerably over of my career. When I first heard of it at university, I thought, “That
 sounds excessive—writing so many tests?” Later, when I encountered it on a large-scale project, it felt surprisingly
 satisfying and effective. But more recently, I’ve come to believe that TDD often *kills productivity*. That’s an
