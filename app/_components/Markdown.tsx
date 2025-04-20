@@ -75,6 +75,9 @@ const Markdown = ({
         small: ({node, ...props}) => (
             <small className="text-sm" {...props} />
         ),
+        a: ({node, ...props}) => (
+            <a className="text-blue-300 hover:underline" target={"_blank"} {...props} />
+        ),
         code: ({node, className, children, ...props}) => {
             const match = /language-(\w+)/.exec(className || '');
             const code = String(children).replace(/\n$/, '')
