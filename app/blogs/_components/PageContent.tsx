@@ -99,10 +99,9 @@ const PageContent = ({blogs}: { blogs: Awaited<ReturnType<typeof getArticleCardD
                                 <div
                                     className="flex flex-col h-full bg-gray-900 rounded-xl overflow-hidden hover:bg-gray-800 transition-colors">
                                     <div className="relative h-48 overflow-hidden">
-                                        <Image
+                                        <img
                                             src={blog.image || "/placeholder.png"}
                                             alt={blog.title}
-                                            fill
                                             className="object-cover transition-transform duration-500 group-hover:scale-105"
                                         />
                                         <div
