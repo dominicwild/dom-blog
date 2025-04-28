@@ -28,6 +28,7 @@ don't ask for permission (within reason, of course) and if they need cooperation
 someone they've never spoken to before. They'll ask the DevOps team if they can take ownership over that pipeline,
 they'll inform that person who keeps raising PRs on that library making breaking changes and come up with a solution,
 they'll figure out the right people who should be writing those tickets.
+
 ![image.png](https://supernotes-resources.s3.amazonaws.com/image-uploads/6eabf070-7e14-49ae-9523-dbc54a056a6b--image.png)
 
 This is all to say, effective developers do not constrain themselves to "their lane." They take full ownership and
@@ -45,7 +46,9 @@ upon you favorably, you eventually get the answer! Whether you're caught in pers
 answers at all, both outcomes are problematic because your communication has limited visibility. I have found that often
 this knowledge is useful for an entire team, or someone you've never even heard of sees something wrong in the answer
 you've been given.
+
 ![image.png](https://supernotes-resources.s3.amazonaws.com/image-uploads/295cecb9-e07c-4aec-9670-274372e01320--image.png)
+
 On a project, a developer told me, "Just ask in the project channel, it's better." It's such an obvious, simple thing to
 do, and it overcomes all the issues with private one-on-one communications. It spreads knowledge and utilizes the
 collective intelligence of everyone who sees it.
@@ -67,11 +70,13 @@ ineffective—in fact, sometimes downright counterproductive to a team. This is 
 
 ### The Kata Trap
 
-Some people swear by [coding katas](http://codekata.com/). They'll do one
+Some people swear by [coding katas](http://codekata.com/).
+They'll do one
 every week, or they'll do the same one 20 times and experiment with different solutions ("patterns"). Katas, while not
 entirely useless, train a very specific set of skills: problem solving, data structures, and technologies (languages,
 libraries, etc.).
-![image.png](https://supernotes-resources.s3.amazonaws.com/image-uploads/693cc98c-6600-421f-9f87-a297fa9137a6--image.png)
+
+![image.png](https://supernotes-resources.s3.amazonaws.com/image-uploads/5a0ee6b8-5235-41d1-9f5c-c3a311d4eea9--image.png)
 
 Katas are very useful for starting to learn a language or developing your problem-solving skills in a particular area.
 However, you must practice them _with a purpose_, otherwise you don't develop yourself in a meaningful way. I've
@@ -85,6 +90,8 @@ mindless consumption can hold you back. Some of the worst developers I have ever
 unnecessarily complex solutions to simple problems (like
 this [satirical enterprise FizzBuzz implementation](https://github.com/EnterpriseQualityCoding/FizzBuzzEnterpriseEdition)),
 explain every part of it, and unironically relish in its "elegancy."
+
+![image.png](https://supernotes-resources.s3.amazonaws.com/image-uploads/d346d75c-245e-40c2-9f39-5bb0e9ecab5c--image.png)
 
 Their code is hard to understand, change, and read without being clued in on all their computer science theory. Talking
 to them can also be difficult due to their use of esoteric terms or very specific definitions for otherwise vague terms
@@ -108,6 +115,8 @@ develop. You'll _feel_ the value in pipelines you build, tests (if you need them
 choose to adopt. You will be exposed to genuine challenges: incomplete requirements, real user feedback, performance
 bottlenecks, deployment issues.
 
+![image.png](https://supernotes-resources.s3.amazonaws.com/image-uploads/b16886bc-bdf9-4f05-98d9-a06afca28344--image.png)
+
 It is important to note that this is not required to be an effective developer. But it dramatically rounds out your
 skillset in all the areas that matter when developing solutions at scale.
 
@@ -121,6 +130,7 @@ a critical mind and don't get carried away on semantics or computing word salad.
 These three behaviors—taking action beyond perceived boundaries, embracing open communication, and practicing with
 genuine purpose—represent just some of the ways effective developers stand out from the crowd. While not an exhaustive
 list, they are behaviors I've consistently observed making a significant difference in developer impact.
+
 ![image.png](https://supernotes-resources.s3.amazonaws.com/image-uploads/787d5982-c311-48bd-b852-0f9017a0e0e2--image.png)
 
 Effective developers don't wait for permission to fix problems; if they can provide value, they just do it. They keep
