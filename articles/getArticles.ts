@@ -74,7 +74,8 @@ export async function getArticleCardData() {
             }
         })
 
-    return await Promise.all(cardData)
+    return (await Promise.all(cardData))
+        .sort(byArticleDateDescending())
 }
 
 async function getMetadataForArticle(dir: string) {
@@ -83,6 +84,12 @@ async function getMetadataForArticle(dir: string) {
 
 export type RecentArticles = ReturnType<typeof getRecentArticlesMetadata>
 export type RecentArticle = Awaited<ReturnType<typeof getRecentArticlesMetadata>>[number]
+
+function byArticleDateDescending() {
+    return (metadata: { date: Date }, metadata2: {
+        date: Date
+    }) => -(metadata.date.getTime() - metadata2.date.getTime());
+}
 
 export async function getRecentArticlesMetadata() {
     const articleDirs = fetchArticleDirectories();
@@ -98,7 +105,7 @@ export async function getRecentArticlesMetadata() {
 
     const articleMetadata = await Promise.all(articleMetadataPromises);
     return articleMetadata.filter(metadata => metadata.show)
-        .sort((metadata, metadata2) => -(metadata.date.getTime() - metadata2.date.getTime()))
+        .sort(byArticleDateDescending())
         .slice(0, 3);
 }
 
