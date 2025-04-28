@@ -5,7 +5,35 @@ import {Calendar, Tag} from "lucide-react";
 import Markdown from "@/app/_components/Markdown";
 import {Badge} from "@/components/ui/badge";
 import {Spinner} from "@/components/ui/spinner";
+import type {Metadata} from "next";
 
+
+export async function generateMetadata({params}: { params: Promise<Record<string, string>> }) {
+    const slug = (await params).slug
+    const articleMetadata = await getArticleMetaData(slug);
+
+    if (!articleMetadata) {
+        return null;
+    }
+
+    return {
+        title: articleMetadata.title,
+        description: articleMetadata.description,
+        openGraph: {
+            images: [
+                {
+                    url: articleMetadata.image,
+                    width: 1200,
+                    height: 630,
+                },
+            ],
+        },
+        twitter: {
+            images: [articleMetadata.image],
+            card: "summary_large_image",
+        },
+    } as Metadata;
+}
 
 export async function generateStaticParams() {
     const blogs = await getAllArticleParams();
