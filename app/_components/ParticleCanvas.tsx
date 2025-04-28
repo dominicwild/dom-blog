@@ -280,7 +280,6 @@ export default function ParticleCanvas() {
             // Reduced particle count to prevent clumping
             const particleCount = Math.min(Math.floor(window.innerWidth / 60), 60)
 
-            // Color palette - more blue-focused
             const colors = [
                 {fill: "#60a5fa", glow: "#3b82f6"}, // Blue
                 {fill: "#93c5fd", glow: "#60a5fa"}, // Light Blue
@@ -308,7 +307,7 @@ export default function ParticleCanvas() {
 
                     const baseRadius = Math.random() * 3 + 2
                     const colorIndex = Math.floor(Math.random() * colors.length)
-                    const pixelated = Math.random() > 0.7 // 30% chance of pixelated particles
+                    const pixelated = Math.random() > 0.7
 
                     particles.push({
                         x,
@@ -335,7 +334,6 @@ export default function ParticleCanvas() {
 
         createParticles()
 
-        // Animation loop
         const animate = () => {
             ctx.clearRect(0, 0, canvas.width, canvas.height)
 
@@ -799,9 +797,9 @@ export default function ParticleCanvas() {
     }, [])
 
     return (
-        <>
+        <div className={"absolute w-full h-full select-none pointer-events-none"}>
             <canvas ref={bgCanvasRef} className="absolute top-0 left-0 w-full h-full"/>
             <canvas ref={canvasRef} className="absolute top-0 left-0 w-full h-full"/>
-        </>
+        </div>
     )
 }

@@ -97,7 +97,9 @@ export async function getRecentArticlesMetadata() {
     })
 
     const articleMetadata = await Promise.all(articleMetadataPromises);
-    return articleMetadata.filter(metadata => metadata.show).slice(0, 3);
+    return articleMetadata.filter(metadata => metadata.show)
+        .sort((metadata, metadata2) => -(metadata.date.getTime() - metadata2.date.getTime()))
+        .slice(0, 3);
 }
 
 export async function getArticleMetaData(folderName: string) {
