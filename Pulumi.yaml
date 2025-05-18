@@ -1,0 +1,16 @@
+name: dom-blog
+description: A minimal AWS TypeScript Pulumi program
+runtime:
+  name: nodejs
+  options:
+    packagemanager: npm
+    tsconfig: tsconfig.json
+main: pulumi/config.ts
+stackConfigDir: pulumi
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: aws-typescript
+  aws:defaultTags:
+    value:
+      project: dom-blog
