@@ -41,7 +41,7 @@ const Markdown = ({
             <ol className="list-decimal pl-6 mb-4" {...props} />
         ),
         li: ({node, ...props}) => (
-            <li className="mb-1" {...props} />
+            <li className="mb-2" {...props} />
         ),
         p: ({node, ...props}) => (
             <p className={`${paragraph1ClassName}`} {...props} />
