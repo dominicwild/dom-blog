@@ -1,8 +1,9 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as aws from "@pulumi/aws";
 import * as awsx from "@pulumi/awsx";
+import * as vercel from "@pulumiverse/vercel";
 
-const environment = pulumi.getStack();
+const environment = pulumi.getStack() as "dev" | "production";
 const domain = environment === "production" ? "blog.dominicwild.com" : `${environment}.blog.dominicwild.com`;
 const subdomain = domain.replace(".dominicwild.com", "");
 const sesIdentity = new aws.ses.DomainIdentity("ses-domain-identity", {
@@ -14,9 +15,6 @@ export const sesEmailDomain = domain
 const sesDkim = new aws.ses.DomainDkim("ses-domain-dkim", {
     domain: sesIdentity.domain,
 });
-
-export const sesIdentityArn = sesIdentity.arn;
-export const sesDkimTokens = sesDkim.dkimTokens;
 
 const parentDomain = "dominicwild.com";
 
@@ -73,7 +71,6 @@ const blogEmailTable = new aws.dynamodb.Table("dom-blog-table", {
 });
 
 export const domBlogTableName = blogEmailTable.name;
-export const domBlogTableArn = blogEmailTable.arn
 
 const backendUser = new aws.iam.User("domblog-backend-user", {
     name: `${environment}-domblog-backend-user`,
@@ -113,3 +110,22 @@ const policyAttachment = new aws.iam.UserPolicyAttachment("domblog-policy-attach
 
 export const backendAccessKeyId = backendUserKeys.id;
 export const backendSecretAccessKey = pulumi.secret(backendUserKeys.secret);
+
+// Set vercel environment variables
+const project = vercel.Project.get("dom-blog", process.env.VERCEL_PROJECT_ID!);
+
+[
+    ["SEND_EMAILS", "true"],
+    ["DYNAMO_TABLE_NAME", domBlogTableName],
+    ["SES_FROM_EMAIL_DOMAIN", sesIdentity.domain],
+    ["AWS_CLIENT_ID", backendAccessKeyId],
+    ["AWS_CLIENT_SECRET", backendSecretAccessKey],
+].forEach(([key, value]) => {
+    const targets = environment === "dev" ? ["preview", "development"] : ["production"]
+    new vercel.ProjectEnvironmentVariable(`vercel-env-${key}`, {
+        projectId: project.id,
+        key: key,
+        value: value,
+        targets: targets,
+    });
+})

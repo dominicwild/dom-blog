@@ -8,14 +8,17 @@
     "build": "next build",
     "build:production": "./scripts/build.sh",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "staging:preview": "dotenv -- pulumi preview --stack dev",
+    "staging:deploy": "dotenv -- pulumi up --stack dev"
   },
   "dependencies": {
     "@aws-sdk/client-ses": "^3.812.0",
     "@icons-pack/react-simple-icons": "^12.6.0",
-    "@pulumi/aws": "^6.0.0",
+    "@pulumi/aws": "^6.80.0",
     "@pulumi/awsx": "^2.0.2",
     "@pulumi/pulumi": "^3.113.0",
+    "@pulumiverse/vercel": "1.15.0",
     "@radix-ui/react-slot": "^1.2.0",
     "@vercel/analytics": "^1.5.0",
     "aws-sdk": "^2.1692.0",
@@ -41,6 +44,7 @@
     "@types/react": "^19.1.1",
     "@types/react-dom": "^19",
     "@types/react-syntax-highlighter": "^15.5.13",
+    "dotenv-cli": "^8.0.0",
     "raw-loader": "^4.0.2",
     "tailwindcss": "^4",
     "typescript": "^5"
