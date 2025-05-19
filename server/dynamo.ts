@@ -10,7 +10,7 @@ import {sendEmail} from "@/server/email";
 export async function getDb() {
 
     const client = new DynamoDBClient({
-        region: "eu-west-1",
+        region: "eu-west-1"
     });
 
     const table = process.env.DYNAMO_TABLE_NAME;
