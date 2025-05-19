@@ -24,7 +24,7 @@ export async function sendEmail({
 
     if (process.env.SEND_EMAILS === "false") {
         console.log(`Sent email with body ${htmlBody}`)
-        return;
+        return {success: true};
     }
 
     const toAddresses = Array.isArray(to) ? to : [to];
