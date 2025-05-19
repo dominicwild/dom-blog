@@ -108,24 +108,50 @@ const policyAttachment = new aws.iam.UserPolicyAttachment("domblog-policy-attach
     policyArn: backendDynamoPolicy.arn,
 });
 
-const sesSendPolicy = new aws.iam.Policy("ses-send-policy", {
-    name: `${environment}-ses-send-policy`,
-    policy: pulumi
-        .all([sesIdentity.arn])
-        .apply(([identityArn]) => JSON.stringify({
+if (environment === "production") {
+    const sesSendPolicy = new aws.iam.Policy("ses-send-policy", {
+        name: `${environment}-ses-send-policy`,
+        policy: pulumi
+            .all([sesIdentity.arn])
+            .apply(([identityArn]) => JSON.stringify({
+                Version: "2012-10-17",
+                Statement: [{
+                    Effect: "Allow",
+                    Action: ["ses:SendEmail", "ses:SendRawEmail"],
+                    Resource: identityArn,
+                }],
+            })),
+    });
+
+    new aws.iam.UserPolicyAttachment("attach-ses-send", {
+        user: backendUser.name,
+        policyArn: sesSendPolicy.arn,
+    });
+} else {
+    const caller = aws.getCallerIdentity();
+    const sesWildcardArn = pulumi
+        .all([caller, aws.config.region])
+        .apply(([whoami, rg]) =>
+            `arn:aws:ses:${rg}:${whoami.accountId}:identity/*`
+        );
+
+    const sesSendPolicy = new aws.iam.Policy("ses-send-policy", {
+        name: pulumi.interpolate`${pulumi.getStack()}-ses-send-policy`,
+        policy: sesWildcardArn.apply(arn => JSON.stringify({
             Version: "2012-10-17",
             Statement: [{
                 Effect: "Allow",
                 Action: ["ses:SendEmail", "ses:SendRawEmail"],
-                Resource: identityArn,
+                Resource: arn,
             }],
         })),
-});
+    });
 
-new aws.iam.UserPolicyAttachment("attach-ses-send", {
-    user: backendUser.name,
-    policyArn: sesSendPolicy.arn,
-});
+    new aws.iam.UserPolicyAttachment("attach-ses-send", {
+        user: backendUser.name,
+        policyArn: sesSendPolicy.arn,
+    });
+}
 
 export const backendAccessKeyId = backendUserKeys.id;
 export const backendSecretAccessKey = pulumi.secret(backendUserKeys.secret);
