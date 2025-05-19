@@ -81,7 +81,7 @@ const backendUserKeys = new aws.iam.AccessKey("electro-backend-user-keys", {
     user: backendUser.name,
 });
 
-const writeOnlyPolicy = new aws.iam.Policy("electro-write-only-policy", {
+const backendDynamoPolicy = new aws.iam.Policy("electro-write-only-policy", {
     name: `${environment}-electro-write-only-policy`,
     policy: blogEmailTable.arn.apply(tableArn => JSON.stringify({
         Version: "2012-10-17",
@@ -92,7 +92,8 @@ const writeOnlyPolicy = new aws.iam.Policy("electro-write-only-policy", {
                     "dynamodb:PutItem",
                     "dynamodb:UpdateItem",
                     "dynamodb:DeleteItem",
-                    "dynamodb:BatchWriteItem"
+                    "dynamodb:BatchWriteItem",
+                    "dynamodb:Query"
                 ],
                 Resource: [
                     tableArn,
@@ -105,7 +106,7 @@ const writeOnlyPolicy = new aws.iam.Policy("electro-write-only-policy", {
 
 const policyAttachment = new aws.iam.UserPolicyAttachment("domblog-policy-attachment", {
     user: backendUser.name,
-    policyArn: writeOnlyPolicy.arn,
+    policyArn: backendDynamoPolicy.arn,
 });
 
 export const backendAccessKeyId = backendUserKeys.id;
