@@ -89,6 +89,7 @@ export async function submitEmail(email: string) {
 
 
     const confirmationLink = `${process.env.VERCEL_PROJECT_PRODUCTION_URL!}/confirm?email=${encodeURIComponent(email)}&id=${encodeURIComponent(record.id)}`;
+    const unsubscribeLink = `${process.env.VERCEL_PROJECT_PRODUCTION_URL!}/unsubscribe?email=${encodeURIComponent(email)}&id=${encodeURIComponent(record.id)}`;
 
     await sendEmail({
         to: email,
@@ -101,6 +102,10 @@ export async function submitEmail(email: string) {
                 and then you will receive updates when articles are posted!
             </p>
             <p>Best regards,<br>Dominic</p>
+            <small>If you wish to unsubscribe, use 
+            <a href="${unsubscribeLink}"> this link </a>
+            .
+            </small>
         `,
         textBody: "Please confirm your email for blog updates. Best regards, Dominic"
     });
