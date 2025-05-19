@@ -97,14 +97,13 @@ export async function submitEmail(email: string) {
         htmlBody: `
             <h1>Thanks for subscribing!</h1>
             <p>
-                Please confirm your email at
-                <a href="${confirmationLink}"> this link </a>
+                Please confirm your email at&#32;
+                <a href="${confirmationLink}">this link</a>
                 and then you will receive updates when articles are posted!
             </p>
             <p>Best regards,<br>Dominic</p>
-            <small>If you wish to unsubscribe, use 
-            <a href="${unsubscribeLink}"> this link </a>
-            .
+            <small>If you wish to unsubscribe, use&#32;
+            <a href="${unsubscribeLink}">this link</a>.
             </small>
         `,
         textBody: "Please confirm your email for blog updates. Best regards, Dominic"
