@@ -122,7 +122,7 @@ export async function confirmEmailSubscription(id: string, email: string) {
 
     const isVerified = record.emailHash === emailHash
 
-    if (isVerified) {
+    if (isVerified && !record.email) {
         await db.Email.put({
             emailHash,
             id,
