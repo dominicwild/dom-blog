@@ -136,3 +136,23 @@ export async function confirmEmailSubscription(id: string, email: string) {
 
     return isVerified;
 }
+
+export async function removeEmailSubscription(id: string, email: string) {
+    const emailHash = hash(email);
+    const db = await getDb();
+    const {data} = await db.Email.query.byId({id}).go();
+
+    if (data.length === 0) {
+        throw new Error("Could not find provided email address.");
+    }
+
+    for (let record of data) {
+        const isVerified = record.emailHash === emailHash
+
+        if (isVerified) {
+            await db.Email.delete({
+                emailHash: record.emailHash
+            }).go();
+        }
+    }
+}
