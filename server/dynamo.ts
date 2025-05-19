@@ -111,7 +111,6 @@ export async function confirmEmailSubscription(id: string, email: string) {
     const db = await getDb();
     const {data} = await db.Email.query.byId({id}).go();
 
-    console.log("eyyo", JSON.stringify(data, null, 2));
     if (data.length === 0) {
         throw new Error("Could not find provided email address.");
     }
