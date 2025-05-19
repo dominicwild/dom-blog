@@ -16,8 +16,16 @@ export function EmailSubmit() {
 
         setSubmitting(true);
         try {
-            await submitEmail(email);
-            setSubmitted(true);
+            const result = await submitEmail(email);
+            if (result?.success) {
+                setSubmitted(true);
+            } else {
+                if (result && result.error) {
+                    setError((result.error as unknown as Error).message);
+                } else {
+                    setError("An unknown error occurred.");
+                }
+            }
         } catch (e) {
             setError((e as unknown as Error).message)
         } finally {

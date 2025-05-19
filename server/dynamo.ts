@@ -91,7 +91,7 @@ export async function submitEmail(email: string) {
     const confirmationLink = `${process.env.VERCEL_PROJECT_PRODUCTION_URL!}/confirm?email=${encodeURIComponent(email)}&id=${encodeURIComponent(record.id)}`;
     const unsubscribeLink = `${process.env.VERCEL_PROJECT_PRODUCTION_URL!}/unsubscribe?email=${encodeURIComponent(email)}&id=${encodeURIComponent(record.id)}`;
 
-    await sendEmail({
+    return await sendEmail({
         to: email,
         subject: "Confirm your subscription to Dominic's Blog",
         htmlBody: `
