@@ -9,6 +9,8 @@
     "build:production": "./scripts/build.sh",
     "start": "next start",
     "lint": "next lint",
+    "production:preview": "dotenv -- pulumi preview --stack production",
+    "production:deploy": "dotenv -- pulumi up --stack production",
     "staging:preview": "dotenv -- pulumi preview --stack dev",
     "staging:deploy": "dotenv -- pulumi up --stack dev"
   },
