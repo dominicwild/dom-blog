@@ -1,6 +1,5 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as aws from "@pulumi/aws";
-import * as awsx from "@pulumi/awsx";
 import * as vercel from "@pulumiverse/vercel";
 
 const environment = pulumi.getStack() as "dev" | "production";
@@ -109,6 +108,30 @@ const policyAttachment = new aws.iam.UserPolicyAttachment("domblog-policy-attach
     policyArn: backendDynamoPolicy.arn,
 });
 
+const caller = aws.getCallerIdentity();
+const sesWildcardArn = pulumi
+    .all([caller, aws.config.region])
+    .apply(([whoami, rg]) =>
+        `arn:aws:ses:${rg}:${whoami.accountId}:identity/*`
+    );
+
+const sesSendPolicy = new aws.iam.Policy("ses-send-policy", {
+    name: pulumi.interpolate`${pulumi.getStack()}-ses-send-policy`,
+    policy: sesWildcardArn.apply(arn => JSON.stringify({
+        Version: "2012-10-17",
+        Statement: [{
+            Effect: "Allow",
+            Action: ["ses:SendEmail", "ses:SendRawEmail"],
+            Resource: arn,
+        }],
+    })),
+});
+
+new aws.iam.UserPolicyAttachment("attach-ses-send", {
+    user: backendUser.name,
+    policyArn: sesSendPolicy.arn,
+});
+
 export const backendAccessKeyId = backendUserKeys.id;
 export const backendSecretAccessKey = pulumi.secret(backendUserKeys.secret);
 
@@ -119,8 +142,8 @@ const project = vercel.Project.get("dom-blog", process.env.VERCEL_PROJECT_ID!);
     ["SEND_EMAILS", "true"],
     ["DYNAMO_TABLE_NAME", domBlogTableName],
     ["SES_FROM_EMAIL_DOMAIN", sesIdentity.domain],
-    ["AWS_CLIENT_ID", backendAccessKeyId],
-    ["AWS_CLIENT_SECRET", backendSecretAccessKey],
+    ["AWS_ACCESS_KEY_ID", backendAccessKeyId],
+    ["AWS_SECRET_ACCESS_KEY", backendSecretAccessKey],
 ].forEach(([key, value]) => {
     const targets = environment === "dev" ? ["preview", "development"] : ["production"]
     new vercel.ProjectEnvironmentVariable(`vercel-env-${key}`, {
