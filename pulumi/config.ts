@@ -4,41 +4,50 @@ import * as awsx from "@pulumi/awsx";
 
 const environment = pulumi.getStack();
 const domain = environment === "production" ? "blog.dominicwild.com" : `${environment}.blog.dominicwild.com`;
+const subdomain = domain.replace(".dominicwild.com", "");
 const sesIdentity = new aws.ses.DomainIdentity("ses-domain-identity", {
     domain: domain,
 });
 
-// SES DKIM
+export const sesEmailDomain = domain
+
 const sesDkim = new aws.ses.DomainDkim("ses-domain-dkim", {
     domain: sesIdentity.domain,
 });
 
-// Export SES identity ARN and verification tokens
 export const sesIdentityArn = sesIdentity.arn;
 export const sesDkimTokens = sesDkim.dkimTokens;
 
+const parentDomain = "dominicwild.com";
 
-const zone = new aws.route53.Zone("blog-domain", {
-    name: domain,
-});
+const lightsail = new aws.Provider("lightsail", {region: "us-east-1"});
+const parentZone = aws.lightsail.Domain.get(
+    "parentZone",
+    parentDomain,
+    {domainName: parentDomain},
+    {provider: lightsail},
+);
 
-const verificationRecord = new aws.route53.Record("ses-verification-record", {
-    zoneId: zone.zoneId,
-    name: `_amazonses.${domain}`,
-    type: "TXT",
-    ttl: 600,
-    records: [sesIdentity.verificationToken],
-});
+sesIdentity.verificationToken.apply(token => {
+    return new aws.lightsail.DomainEntry(`ses-verification-record`, {
+            domainName: parentZone.domainName,
+            name: `_amazonses.${subdomain}`,
+            type: "TXT",
+            target: `"${token}"`
+        },
+        {provider: lightsail}
+    );
+})
 
 const dkimRecords = sesDkim.dkimTokens.apply(tokens => {
     return tokens.map((token, index) => {
-        return new aws.route53.Record(`ses-dkim-record-${index}`, {
-            zoneId: zone.zoneId,
-            name: `${token}._domainkey.${domain}`,
-            type: "CNAME",
-            ttl: 600,
-            records: [`${token}.dkim.amazonses.com`],
-        });
+        return new aws.lightsail.DomainEntry(`ses-dkim-${token.slice(0, 5)}`, {
+                domainName: parentZone.domainName,
+                name: `${token}._domainkey.${subdomain}`,
+                type: "CNAME",
+                target: `${token}.dkim.amazonses.com`,
+            },
+            {provider: lightsail});
     });
 });
 

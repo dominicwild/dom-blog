@@ -1,0 +1,107 @@
+"use server"
+
+import {Entity} from "electrodb";
+
+import {DynamoDBClient} from "@aws-sdk/client-dynamodb";
+import {createHmac} from "node:crypto";
+import {sendEmail} from "@/server/email";
+
+
+export async function getDb() {
+
+    const client = new DynamoDBClient({
+        region: "eu-west-1",
+    });
+
+    const table = process.env.DYNAMO_TABLE_NAME;
+
+    const Email = new Entity(
+        {
+            model: {
+                entity: "emails",
+                version: "1",
+                service: "blog",
+            },
+            attributes: {
+                id: {
+                    type: "string",
+                    required: true,
+                    default: () => crypto.randomUUID()
+                },
+                email: {
+                    type: "string",
+                },
+                emailHash: {
+                    type: "string",
+                    required: true,
+                }
+            },
+            indexes: {
+                byEmailHash: {
+                    pk: {
+                        field: "pk",
+                        composite: ["emailHash"]
+                    },
+                    sk: {
+                        field: "sk",
+                        composite: ["emailHash"]
+                    }
+                },
+                byId: {
+                    index: "gsi1pk2",
+                    pk: {
+                        field: "gsi1pk",
+                        composite: ["id"]
+                    },
+                    sk: {
+                        field: "gsi1sk",
+                        composite: ["id"]
+                    }
+                }
+            },
+        },
+        {client, table},
+    );
+
+    return {Email}
+}
+
+function hash(value: string) {
+    return createHmac("sha256", process.env.HASH_KEY!).update(value).digest("hex");
+}
+
+export async function submitEmail(email: string) {
+    const db = await getDb();
+
+    const emailHash = hash(email)
+    const emailExists = await db.Email.query.byEmailHash({
+        emailHash
+    }).go()
+
+    if (emailExists.data.length > 0) {
+        return;
+    }
+
+    const result = await db.Email.put({
+        emailHash: hash(email),
+    }).go();
+    const record = result.data;
+
+
+    const confirmationLink = `${process.env.VERCEL_PROJECT_PRODUCTION_URL!}/confirm?email=${encodeURIComponent(email)}&id=${encodeURIComponent(record.id)}`;
+
+    await sendEmail({
+        to: email,
+        subject: "Confirm your subscription to Dominic's Blog",
+        htmlBody: `
+            <h1>Thanks for subscribing!</h1>
+            <p>
+                Please confirm your email at
+                <a href="${confirmationLink}"> this link </a>
+                and then you will receive updates when articles are posted!
+            </p>
+            <p>Best regards,<br>Dominic</p>
+        `,
+        textBody: "Please confirm your email for blog updates. Best regards, Dominic"
+    });
+}
