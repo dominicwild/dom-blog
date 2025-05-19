@@ -3,7 +3,7 @@ import {Montserrat} from "next/font/google";
 import "./globals.css";
 import {Analytics} from "@vercel/analytics/next";
 import React, {ReactNode} from "react";
-import {EmailSubmit} from "@/app/_components/emailSubmit";
+import {EmailSubmit} from "./_components/EmailSubmit";
 
 
 export const metadata: Metadata = {
