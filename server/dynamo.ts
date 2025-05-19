@@ -79,7 +79,7 @@ export async function submitEmail(email: string) {
     }).go()
 
     if (emailExists.data.length > 0) {
-        return;
+        throw new Error("Email already exists");
     }
 
     const result = await db.Email.put({
