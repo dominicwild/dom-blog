@@ -24,9 +24,6 @@ export function ConfirmPage() {
                     return;
                 }
 
-                console.log("email", email);
-                console.log("id", id);
-
                 const isVerified = await confirmEmailSubscription(id, email);
                 if (!isVerified) {
                     setState("error")
