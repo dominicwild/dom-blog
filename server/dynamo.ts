@@ -48,7 +48,7 @@ export async function getDb() {
                     }
                 },
                 byId: {
-                    index: "gsi1pk2",
+                    index: "gsi1pk-gsi1sk-index",
                     pk: {
                         field: "gsi1pk",
                         composite: ["id"]
@@ -104,4 +104,32 @@ export async function submitEmail(email: string) {
         `,
         textBody: "Please confirm your email for blog updates. Best regards, Dominic"
     });
+}
+
+export async function confirmEmailSubscription(id: string, email: string) {
+    const emailHash = hash(email);
+    const db = await getDb();
+    const {data} = await db.Email.query.byId({id}).go();
+
+    console.log("eyyo", JSON.stringify(data, null, 2));
+    if (data.length === 0) {
+        throw new Error("Could not find provided email address.");
+    }
+    if (data.length !== 1) {
+        throw new Error("Duplicate ID exists.");
+    }
+
+    const record = data[0]
+
+    const isVerified = record.emailHash === emailHash
+
+    if (isVerified) {
+        await db.Email.put({
+            emailHash,
+            id,
+            email,
+        }).go();
+    }
+
+    return isVerified;
 }
