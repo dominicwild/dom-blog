@@ -82,7 +82,9 @@ async function getAllEmails() {
 async function getMissingArticleMetaData(missingArticles: string[]) {
     const articleMetaData = await Promise.all(missingArticles.map(article => getArticleMetaData(article)));
 
-    const nonNullArticleMetaData = articleMetaData.filter(metadata => metadata !== null);
+    const nonNullArticleMetaData = articleMetaData
+        .filter(metadata => metadata !== null)
+        .filter(metadata => metadata.show);
 
     if (nonNullArticleMetaData.length !== articleMetaData.length) {
         console.warn(`A missing article failed to have its metadata fetched, which is one of ${JSON.stringify(missingArticles)}`)
