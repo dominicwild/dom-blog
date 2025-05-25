@@ -1,6 +1,7 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as aws from "@pulumi/aws";
 import * as vercel from "@pulumiverse/vercel";
+import {Output} from "@pulumi/pulumi";
 
 const environment = pulumi.getStack() as "dev" | "production";
 const domain = environment === "production" ? "blog.dominicwild.com" : `${environment}.blog.dominicwild.com`;
@@ -38,7 +39,7 @@ sesIdentity.verificationToken.apply(token => {
 
 new aws.lightsail.DomainEntry(`SPF-record`, {
         domainName: parentZone.domainName,
-        name: domain,
+        name: `${subdomain}`,
         type: "TXT",
         target: `"v=spf1 include:amazonses.com -all"`
     },
@@ -46,7 +47,7 @@ new aws.lightsail.DomainEntry(`SPF-record`, {
 );
 
 const dkimRecords = sesDkim.dkimTokens.apply(tokens => {
-    return tokens.map((token, index) => {
+    return tokens.map((token) => {
         return new aws.lightsail.DomainEntry(`ses-dkim-${token.slice(0, 5)}`, {
                 domainName: parentZone.domainName,
                 name: `${token}._domainkey.${subdomain}`,
@@ -169,11 +170,16 @@ export const backendSecretAccessKey = pulumi.secret(backendUserKeys.secret);
 let vercelProjectId = process.env.VERCEL_PROJECT_ID!;
 const project = vercel.getProjectOutput({name: "dom-blog"});
 
-const gitBranch = environment === "production" ? "master" : "add-ses"
-const deploymentUrl = `${vercelProjectId}-${gitBranch}.vercel.app`;
+let deploymentUrl: Output<string>;
+if (environment === "dev") {
+    deploymentUrl = pulumi.interpolate`dom-blog-git-add-ses-dominics-projects-b72bf392.vercel.app`;
+} else {
+    deploymentUrl = pulumi.interpolate`${domain}`;
+}
+
 
 const postDeploy = new vercel.Webhook("post-deploy", {
-    endpoint: `https://${deploymentUrl}/api/post-deploy`,
+    endpoint: pulumi.interpolate`https://${deploymentUrl}/api/post-deploy`,
     events: ["deployment.succeeded"],
     projectIds: [project.id],
 });
@@ -190,9 +196,13 @@ const postDeploy = new vercel.Webhook("post-deploy", {
 ].forEach(([key, value]) => {
     const targets = environment === "dev" ? ["preview", "development"] : ["production"]
     new vercel.ProjectEnvironmentVariable(`vercel-env-${key}`, {
-        projectId: project.id,
-        key: key,
-        value: value,
-        targets: targets,
-    });
+            projectId: project.id,
+            key: key,
+            value: value,
+            targets: targets,
+        },
+        {
+            deleteBeforeReplace: true,
+        }
+    );
 })
