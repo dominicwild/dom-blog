@@ -1,11 +1,9 @@
 "use server"
 
 import {Entity} from "electrodb";
-
 import {DynamoDBClient} from "@aws-sdk/client-dynamodb";
 import {createHmac} from "node:crypto";
 import {sendEmail} from "@/server/email";
-
 
 export async function getDb() {
 
@@ -34,6 +32,11 @@ export async function getDb() {
                 emailHash: {
                     type: "string",
                     required: true,
+                },
+                createdAt: {
+                    type: "number",
+                    required: true,
+                    default: () => Date.now(),
                 }
             },
             indexes: {
@@ -63,11 +66,55 @@ export async function getDb() {
         {client, table},
     );
 
-    return {Email}
+    const ArticleList = new Entity(
+        {
+            model: {
+                entity: "articleList",
+                version: "1",
+                service: "blog",
+            },
+            attributes: {
+                id: {
+                    type: "string",
+                    required: true,
+                },
+                articles: {
+                    type: "list",
+                    items: {
+                        type: "string",
+                    },
+                    required: true,
+                },
+            },
+            indexes: {
+                byId: {
+                    pk: {
+                        field: "pk",
+                        composite: ["id"]
+                    },
+                    sk: {
+                        field: "sk",
+                        composite: ["id"]
+                    }
+                },
+            },
+        },
+        {client, table},
+    );
+
+    return {Email, ArticleList}
 }
 
 function hash(value: string) {
     return createHmac("sha256", process.env.HASH_KEY!).update(value).digest("hex");
+}
+
+function createEmailConfirmationLink(email: string, id: string) {
+    return `${process.env.VERCEL_PROJECT_PRODUCTION_URL!}/confirm?email=${encodeURIComponent(email)}&id=${encodeURIComponent(id)}`;
+}
+
+export async function createUnsubscribeLink(email: string, id: string) {
+    return `${process.env.VERCEL_PROJECT_PRODUCTION_URL!}/unsubscribe?email=${encodeURIComponent(email)}&id=${encodeURIComponent(id)}`;
 }
 
 export async function submitEmail(email: string) {
@@ -86,10 +133,8 @@ export async function submitEmail(email: string) {
         emailHash: hash(email),
     }).go();
     const record = result.data;
-
-
-    const confirmationLink = `${process.env.VERCEL_PROJECT_PRODUCTION_URL!}/confirm?email=${encodeURIComponent(email)}&id=${encodeURIComponent(record.id)}`;
-    const unsubscribeLink = `${process.env.VERCEL_PROJECT_PRODUCTION_URL!}/unsubscribe?email=${encodeURIComponent(email)}&id=${encodeURIComponent(record.id)}`;
+    const confirmationLink = createEmailConfirmationLink(email, record.id);
+    const unsubscribeLink = createUnsubscribeLink(email, record.id);
 
     return await sendEmail({
         to: email,

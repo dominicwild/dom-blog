@@ -1,0 +1,13 @@
+### Post Deploy test
+POST localhost:3000/api/post-deploy
+Content-Type: application/json
+x-vercel-signature: someSecret
+
+{
+  "type": "deployment.succeeded",
+  "deployment": {
+    "url": "blog.dominicwild.com"
+  }
+}
+
+###

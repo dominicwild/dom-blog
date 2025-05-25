@@ -36,6 +36,15 @@ sesIdentity.verificationToken.apply(token => {
     );
 })
 
+new aws.lightsail.DomainEntry(`SPF-record`, {
+        domainName: parentZone.domainName,
+        name: domain,
+        type: "TXT",
+        target: `"v=spf1 include:amazonses.com -all"`
+    },
+    {provider: lightsail}
+);
+
 const dkimRecords = sesDkim.dkimTokens.apply(tokens => {
     return tokens.map((token, index) => {
         return new aws.lightsail.DomainEntry(`ses-dkim-${token.slice(0, 5)}`, {
@@ -156,15 +165,28 @@ if (environment === "production") {
 export const backendAccessKeyId = backendUserKeys.id;
 export const backendSecretAccessKey = pulumi.secret(backendUserKeys.secret);
 
-// Set vercel environment variables
-const project = vercel.Project.get("dom-blog", process.env.VERCEL_PROJECT_ID!);
+// Vercel deployment configuration
+let vercelProjectId = process.env.VERCEL_PROJECT_ID!;
+const project = vercel.getProjectOutput({name: "dom-blog"});
 
+const gitBranch = environment === "production" ? "master" : "add-ses"
+const deploymentUrl = `${vercelProjectId}-${gitBranch}.vercel.app`;
+
+const postDeploy = new vercel.Webhook("post-deploy", {
+    endpoint: `https://${deploymentUrl}/api/post-deploy`,
+    events: ["deployment.succeeded"],
+    projectIds: [project.id],
+});
+
+
+// Set vercel environment variables
 [
     ["SEND_EMAILS", "true"],
     ["DYNAMO_TABLE_NAME", domBlogTableName],
     ["SES_FROM_EMAIL_DOMAIN", sesIdentity.domain],
     ["AWS_ACCESS_KEY_ID", backendAccessKeyId],
     ["AWS_SECRET_ACCESS_KEY", backendSecretAccessKey],
+    ["VERCEL_WEBHOOK_SECRET", postDeploy.secret],
 ].forEach(([key, value]) => {
     const targets = environment === "dev" ? ["preview", "development"] : ["production"]
     new vercel.ProjectEnvironmentVariable(`vercel-env-${key}`, {
