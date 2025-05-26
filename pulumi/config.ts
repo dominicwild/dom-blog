@@ -177,14 +177,6 @@ if (environment === "dev") {
     deploymentUrl = pulumi.interpolate`${domain}`;
 }
 
-
-const postDeploy = new vercel.Webhook("post-deploy", {
-    endpoint: pulumi.interpolate`https://${deploymentUrl}/api/post-deploy`,
-    events: ["deployment.succeeded"],
-    projectIds: [project.id],
-});
-
-
 // Set vercel environment variables
 [
     ["SEND_EMAILS", "true"],
@@ -192,7 +184,7 @@ const postDeploy = new vercel.Webhook("post-deploy", {
     ["SES_FROM_EMAIL_DOMAIN", sesIdentity.domain],
     ["AWS_ACCESS_KEY_ID", backendAccessKeyId],
     ["AWS_SECRET_ACCESS_KEY", backendSecretAccessKey],
-    ["VERCEL_WEBHOOK_SECRET", postDeploy.secret],
+    ["CRON_SECRET", process.env.CRON_SECRET!],
 ].forEach(([key, value]) => {
     const targets = environment === "dev" ? ["preview", "development"] : ["production"]
     new vercel.ProjectEnvironmentVariable(`vercel-env-${key}`, {

@@ -4,67 +4,19 @@ import {getAllArticleParams, getArticleMetaData} from "@/articles/getArticles";
 import {sendEmail} from "@/server/email";
 import {createNewArticleEmailTemplate} from "@/app/api/post-deploy/emailBuilder";
 
-type DeploymentSucceededPayload = {
-    team: {
-        id: string | null;
-    };
-    user: {
-        id: string;
-    };
-    deployment: {
-        id: string;
-        meta: Record<string, unknown>;
-        url: string;
-        name: string;
-    };
-    links: {
-        deployment: string;
-        project: string;
-    };
-    target: 'production' | 'staging' | null;
-    project: {
-        id: string;
-    };
-    plan: string;
-    regions: string[];
-}
-
 export async function POST(request: Request) {
-    const {VERCEL_WEBHOOK_SECRET} = process.env;
-
-    if (typeof VERCEL_WEBHOOK_SECRET != 'string') {
-        throw new Error('No integration secret found');
+    const authHeader = request.headers.get('authorization');
+    if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
+        return new Response('Unauthorized', {
+            status: 401,
+        });
     }
 
+    await sendNewArticleEmail();
 
-    const rawBody = await request.text();
-    const rawBodyBuffer = Buffer.from(rawBody, 'utf-8');
-    const bodySignature = sha1(rawBodyBuffer, VERCEL_WEBHOOK_SECRET);
-
-    // if (bodySignature !== request.headers.get('x-vercel-signature')) {
-    //     return Response.json({
-    //         code: 'invalid_signature',
-    //         error: "signature didn't match",
-    //     });
-    // }
-
-    const json = JSON.parse(rawBodyBuffer.toString('utf-8'));
-
-    switch (json.type) {
-        case 'deployment.succeeded':
-            const deploymentRequest = json as DeploymentSucceededPayload;
-            if (deploymentRequest.deployment.url === "blog.dominicwild.com") {
-                await sendNewArticleEmail();
-            }
-    }
-
-    return new Response('Webhook request validated', {
+    return new Response('request validated', {
         status: 200,
     });
-}
-
-function sha1(data: Buffer, secret: string): string {
-    return createHmac('sha1', secret).update(data).digest('hex');
 }
 
 const ARTICLE_LIST_ID = "1" as const;
