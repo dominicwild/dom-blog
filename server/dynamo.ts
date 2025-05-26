@@ -134,7 +134,7 @@ export async function submitEmail(email: string) {
     }).go();
     const record = result.data;
     const confirmationLink = createEmailConfirmationLink(email, record.id);
-    const unsubscribeLink = createUnsubscribeLink(email, record.id);
+    const unsubscribeLink = await createUnsubscribeLink(email, record.id);
 
     return await sendEmail({
         to: email,
