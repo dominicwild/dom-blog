@@ -6,7 +6,6 @@ import {createNewArticleEmailTemplate} from "@/app/api/post-deploy/emailBuilder"
 
 export async function GET(request: Request) {
     const authHeader = request.headers.get('authorization');
-    console.log(request.headers);
     if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
         return new Response('Unauthorized', {
             status: 401,
@@ -39,7 +38,9 @@ async function getMissingArticleMetaData(missingArticles: string[]) {
         .filter(metadata => metadata !== null)
         .filter(metadata => metadata.show);
 
-    if (nonNullArticleMetaData.length !== articleMetaData.length) {
+    const nullMetadata = articleMetaData.filter(metadata => metadata === null)
+
+    if (nullMetadata.length > 0) {
         console.warn(`A missing article failed to have its metadata fetched, which is one of ${JSON.stringify(missingArticles)}`)
     }
 
