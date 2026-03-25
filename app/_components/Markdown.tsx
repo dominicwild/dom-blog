@@ -78,22 +78,31 @@ const Markdown = ({
         a: ({node, ...props}) => (
             <a className="text-blue-300 hover:underline" target={"_blank"} {...props} />
         ),
+        pre: ({children}) => <>{children}</>,
         code: ({node, className, children, ...props}) => {
             const match = /language-(\w+)/.exec(className || '');
             const code = String(children).replace(/\n$/, '')
-            return match ? (
-                <SyntaxHighlighter
-                    style={oneDark as any}
-                    language={match[1]}
-                    PreTag="div"
-                >
-                    {code}
-                </SyntaxHighlighter>
-            ) : (
-                <code className={`${className} bg-gray-950 block p-4 border-2 border-gray-700 rounded`} {...props}>
+            if (match) {
+                return (
+                    <SyntaxHighlighter
+                        style={oneDark as any}
+                        language={match[1]}
+                        PreTag="div"
+                    >
+                        {code}
+                    </SyntaxHighlighter>
+                );
+            }
+            const isBlock = code.includes('\n');
+            return isBlock ? (
+                <code className="bg-gray-950 block p-4 border-2 border-gray-700 rounded" {...props}>
                     {children}
                 </code>
-            )
+            ) : (
+                <code className="bg-gray-800 px-1.5 py-0.5 rounded" {...props}>
+                    {children}
+                </code>
+            );
         },
     };
     return (
