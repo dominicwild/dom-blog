@@ -206,6 +206,13 @@ mapCommentAuthor(src / features / comments / comment.mapper.ts
 )
 at
 Array.map(<anonymous>)
+at
+buildCommentThread(src / features / comments / thread.service.ts
+:
+58
+:
+31
+)
 ...
 ```
 
