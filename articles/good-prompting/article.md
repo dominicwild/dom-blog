@@ -183,36 +183,11 @@ really need to think about prompting THIS deeply?" There's probably a reason for
 > I have the following error.
 
 ```typescript
-TypeError: Cannot
-read
-properties
-of
-undefined(reading
-'id'
-)
-at
-getUserDisplayName(src / lib / users / get - user - display - name.ts
-:
-27
-:
-18
-)
-at
-mapCommentAuthor(src / features / comments / comment.mapper.ts
-:
-14
-:
-22
-)
-at
-Array.map(<anonymous>)
-at
-buildCommentThread(src / features / comments / thread.service.ts
-:
-58
-:
-31
-)
+TypeError: Cannot read properties of undefined (reading 'id')
+    at getUserDisplayName (src/lib/users/get-user-display-name.ts:27:18)
+    at mapCommentAuthor (src/features/comments/comment.mapper.ts:14:22)
+    at Array.map (<anonymous>)
+    at buildCommentThread (src/features/comments/thread.service.ts:58:31)
 ...
 ```
 
