@@ -31,8 +31,11 @@ const PageContent = ({blogs}: { blogs: Awaited<ReturnType<typeof getArticleCardD
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    {blogsToShow.map((blog, index) => (
-                        <motion.article
+                    {blogsToShow.map((blog, index) => {
+                        const imageSrc = blog.image || "/placeholder.png";
+
+                        return (
+                            <motion.article
                             key={blog.title}
                             initial={{opacity: 0, y: 20}}
                             animate={{opacity: 1, y: 0}}
@@ -42,16 +45,23 @@ const PageContent = ({blogs}: { blogs: Awaited<ReturnType<typeof getArticleCardD
                             <Link href={`/blogs/${blog.folder}`} className="block h-full">
                                 <div
                                     className="flex flex-col h-full bg-gray-900 rounded-xl overflow-hidden hover:bg-gray-800 transition-colors">
-                                    <div className="relative h-48 overflow-hidden">
+                                    <div className="relative h-48 overflow-hidden bg-gray-950">
                                         <img
-                                            src={blog.image || "/placeholder.png"}
+                                            src={imageSrc}
+                                            alt=""
+                                            aria-hidden="true"
+                                            className="absolute inset-0 h-full w-full scale-110 object-cover blur-xl saturate-125"
+                                        />
+                                        <div className="absolute inset-0 bg-black/25"/>
+                                        <img
+                                            src={imageSrc}
                                             alt={blog.title}
-                                            className="object-cover transition-transform duration-500 group-hover:scale-105"
+                                            className="relative z-10 h-full w-full object-contain"
                                         />
                                         <div
-                                            className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"/>
+                                            className="absolute inset-0 z-20 bg-gradient-to-t from-black/60 to-transparent"/>
                                         <div
-                                            className="absolute top-4 left-4 bg-blue-600 text-white text-xs font-medium px-2 py-1 rounded">
+                                            className="absolute top-4 left-4 z-30 bg-blue-600 text-white text-xs font-medium px-2 py-1 rounded">
                                             {blog?.tags[0]}
                                         </div>
                                     </div>
@@ -75,8 +85,9 @@ const PageContent = ({blogs}: { blogs: Awaited<ReturnType<typeof getArticleCardD
                                     </div>
                                 </div>
                             </Link>
-                        </motion.article>
-                    ))}
+                            </motion.article>
+                        );
+                    })}
                 </div>
             </motion.div>
         </main>
