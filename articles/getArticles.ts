@@ -15,7 +15,7 @@ export type ArticleMetaData = {
     tags: string[],
     image?: string,
     date: Date,
-    show?: Boolean
+    show?: boolean
 }
 
 const articlesDirectory = "articles";
