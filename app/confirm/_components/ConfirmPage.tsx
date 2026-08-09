@@ -167,7 +167,7 @@ export function ConfirmPage() {
                                 animate={{opacity: 1}}
                                 transition={{delay: 0.4, duration: 0.5}}
                             >
-                                Thank you for subscribing to blog updates. You'll now receive notifications when new
+                                Thank you for subscribing to blog updates. You&apos;ll now receive notifications when new
                                 articles are posted.
                             </motion.p>
 

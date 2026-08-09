@@ -109,9 +109,10 @@ function Hero() {
             <div className="mx-auto z-10 w-full px-4 lg:w-[50%] lg:px-0 flex items-center justify-center flex-col">
                 <div
                     className="max-w-2xl backdrop-blur-sm bg-slate-900/30 p-8 rounded-lg border border-blue-500/10 transition-all duration-300 ease-in-out">
-                    <h1 className="mb-2 text-5xl p-2 md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-300 to-cyan-300">
-                        <TypeWriter delay={50}>
-                            Dominic's Blog
+                    <h1 className="mb-2 text-5xl p-2 md:text-7xl font-bold">
+                        <TypeWriter delay={50}
+                                    textClassName="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-300 to-cyan-300">
+                            Dominic&apos;s Blog
                         </TypeWriter>
                     </h1>
                     <h2 className={"px-2 text-white"}>

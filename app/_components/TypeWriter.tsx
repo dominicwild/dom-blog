@@ -7,6 +7,7 @@ interface TypeWriterProps {
     children: string;
     delay?: number;
     className?: string;
+    textClassName?: string;
     hideEndCursor?: boolean;
 }
 
@@ -14,13 +15,14 @@ const TypeWriter: React.FC<TypeWriterProps> = ({
                                                    children,
                                                    delay = 100,
                                                    className = "",
+                                                   textClassName = "",
                                                    hideEndCursor = false
                                                }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [showCursor, setShowCursor] = useState(true);
-    const [finished, setFinished] = useState(false)
     const text = children
     const displayText = text.slice(0, currentIndex)
+    const finished = currentIndex >= text.length
 
     useEffect(() => {
         if (currentIndex < text.length) {
@@ -29,8 +31,6 @@ const TypeWriter: React.FC<TypeWriterProps> = ({
             }, delay);
 
             return () => clearTimeout(timeout);
-        } else {
-            setFinished(true);
         }
     }, [currentIndex, delay, text]);
 
@@ -44,17 +44,18 @@ const TypeWriter: React.FC<TypeWriterProps> = ({
         }, 500);
 
         return () => clearInterval(cursorInterval);
-    }, [finished]);
+    }, [finished, hideEndCursor]);
 
     return (
-        <span className={`relative inline-block ${className}`}>
-      <span className="opacity-0">{text}</span>
-      <span aria-hidden="true" className="absolute inset-0 top-0 left-0">
+        <span className={`relative inline-grid ${className}`}>
+      <span className="sr-only">{text}</span>
+      <span aria-hidden="true" className={`invisible col-start-1 row-start-1 ${textClassName}`}>{text}</span>
+      <span aria-hidden="true" className={`col-start-1 row-start-1 ${textClassName}`}>
         {displayText}
-            <motion.span
-                className={`${showCursor ? 'opacity-100' : 'opacity-0'} transition-opacity duration-100 ease-in-out`}>
-                |
-            </motion.span>
+          <motion.span
+              className={`${showCursor ? 'opacity-100' : 'opacity-0'} transition-opacity duration-100 ease-in-out`}>
+              |
+          </motion.span>
       </span>
     </span>
     );

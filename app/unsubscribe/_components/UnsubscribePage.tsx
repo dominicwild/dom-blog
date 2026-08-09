@@ -163,7 +163,7 @@ export function UnsubscribePage() {
                                 animate={{opacity: 1}}
                                 transition={{delay: 0.4, duration: 0.5}}
                             >
-                                You'll will now no longer receive notifications when new
+                                You&apos;ll will now no longer receive notifications when new
                                 articles are posted.
                             </motion.p>
 
