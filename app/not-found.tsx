@@ -68,7 +68,7 @@ export default function NotFound() {
                     <Button asChild
                             className="flex items-center !p-6 justify-center gap-2 bg-transparent border border-gray-700 hover:border-gray-500 text-gray-300 hover:text-white px-6 py-3 rounded-md transition-all hover:scale-105"
                     >
-                        <Link href="/blog">
+                        <Link href="/blogs">
                             <ArrowLeft size={18}/>
                             Back to blog
                         </Link>

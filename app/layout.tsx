@@ -14,8 +14,8 @@ export const metadata: Metadata = {
         template: `%s | ${siteName}`,
     },
     description: siteDescription,
-    alternates: {
-        canonical: "/",
+    verification: {
+        google: "x9CTxC42dLt3aRLbCO4wFDO6PMURIHDSP69Y1h2DNrQ",
     },
     openGraph: {
         type: "website",
@@ -26,8 +26,8 @@ export const metadata: Metadata = {
         images: [
             {
                 url: absoluteUrl(siteImage),
-                width: 1200,
-                height: 630,
+                width: 1024,
+                height: 1024,
                 alt: siteName,
             },
         ],

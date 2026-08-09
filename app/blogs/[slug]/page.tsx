@@ -39,13 +39,14 @@ export async function generateMetadata({params}: { params: Promise<Record<string
             title: articleMetadata.title,
             description: articleMetadata.description,
             publishedTime: articleMetadata.date.toISOString(),
+            ...(articleMetadata.dateModified ? {
+                modifiedTime: articleMetadata.dateModified.toISOString(),
+            } : {}),
             authors: [siteAuthor.name],
             tags: articleMetadata.tags,
             images: [
                 {
                     url: imageUrl,
-                    width: 1200,
-                    height: 630,
                     alt: articleMetadata.title,
                 },
             ],
@@ -83,6 +84,9 @@ async function Article({slug}: { slug: string }) {
         description: articleMetadata.description,
         image: [imageUrl],
         datePublished: articleMetadata.date.toISOString(),
+        ...(articleMetadata.dateModified ? {
+            dateModified: articleMetadata.dateModified.toISOString(),
+        } : {}),
         author: {
             "@type": "Person",
             name: siteAuthor.name,
@@ -113,7 +117,7 @@ async function Article({slug}: { slug: string }) {
                 dangerouslySetInnerHTML={{__html: JSON.stringify(blogPostingSchema)}}
             />
             <div className="relative">
-                <div className="mx-auto px-46 pt-12 pb-8 relative">
+                <div className="mx-auto px-4 sm:px-8 md:px-12 lg:px-46 pt-12 pb-8 relative">
                     <h1 className="text-4xl lg:text-5xl font-bold mb-6">{articleMetadata.title}</h1>
                     <div className="flex flex-wrap items-center gap-6 text-sm text-slate-400">
                         <div className="flex items-center gap-2">

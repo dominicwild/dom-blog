@@ -22,7 +22,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         },
         ...visibleArticles.map(article => ({
             url: absoluteUrl(`/blogs/${article.folder}`),
-            lastModified: article.date,
+            lastModified: article.dateModified ?? article.date,
             changeFrequency: "monthly" as const,
             priority: 0.7,
         })),

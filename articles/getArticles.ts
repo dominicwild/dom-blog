@@ -15,6 +15,7 @@ export type ArticleMetaData = {
     tags: string[],
     image?: string,
     date: Date,
+    dateModified?: Date,
     show?: boolean
 }
 
@@ -45,15 +46,14 @@ async function getReadingTimeEstimation(markdown: string) {
         .use(remarkStringify)
         .process(markdown)
 
-    const allWords = String(text).split(" ").map(word => word.trim());
+    const allWords = String(text).split(/\s+/).map(word => word.trim());
     const filteredWords = allWords.filter(word =>
         word.length > 0
         && !word.match(/[^\w\s]/)
         && word.length < 20
     );
-    const charCountOfWords = filteredWords.reduce((acc, word) => acc + word.length, 0);
-    const charsPerMinute = 250
-    return Math.round(charCountOfWords / charsPerMinute);
+    const wordsPerMinute = 220
+    return Math.max(1, Math.round(filteredWords.length / wordsPerMinute));
 }
 
 export async function getArticleCardData() {

@@ -16,16 +16,15 @@ const TypeWriter: React.FC<TypeWriterProps> = ({
                                                    className = "",
                                                    hideEndCursor = false
                                                }) => {
-    const [displayText, setDisplayText] = useState('');
     const [currentIndex, setCurrentIndex] = useState(0);
     const [showCursor, setShowCursor] = useState(true);
     const [finished, setFinished] = useState(false)
     const text = children
+    const displayText = text.slice(0, currentIndex)
 
     useEffect(() => {
         if (currentIndex < text.length) {
             const timeout = setTimeout(() => {
-                setDisplayText(prev => prev + text[currentIndex]);
                 setCurrentIndex(prev => prev + 1);
             }, delay);
 
@@ -48,12 +47,15 @@ const TypeWriter: React.FC<TypeWriterProps> = ({
     }, [finished]);
 
     return (
-        <span className={className}>
-      {displayText}
+        <span className={`relative inline-block ${className}`}>
+      <span className="opacity-0">{text}</span>
+      <span aria-hidden="true" className="absolute inset-0 top-0 left-0">
+        {displayText}
             <motion.span
                 className={`${showCursor ? 'opacity-100' : 'opacity-0'} transition-opacity duration-100 ease-in-out`}>
                 |
             </motion.span>
+      </span>
     </span>
     );
 };

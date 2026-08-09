@@ -9,6 +9,13 @@ import Link from "next/link";
 import {UnderlineLink} from "@/app/_components/UnderlineLink";
 import {placeholderTitle} from "@/app/constant";
 import {getDb} from "@/server/dynamo";
+import type {Metadata} from "next";
+
+export const metadata: Metadata = {
+    alternates: {
+        canonical: "/",
+    },
+};
 
 function ArticleCard(props: {
     article: ArticleCardData,
@@ -18,7 +25,7 @@ function ArticleCard(props: {
     const {article} = props;
 
     if (!("folder" in article)) {
-        return <div className="w-[33%]">
+        return <div className="w-full lg:w-[33%]">
             <div className="block w-full h-full no-underline">
                 <Card
                     className={`${props.i == 0 ? "h-48" : "h-40"} gap-y-0 bg-primary border-[#2b3686]  border-2 p-4 transition-all duration-200 ease-in-out text-white items-center justify-center`}
@@ -31,7 +38,7 @@ function ArticleCard(props: {
         </div>
     }
 
-    return <div className="w-[33%]">
+    return <div className="w-full lg:w-[33%]">
         <Link href={`/blogs/${article.folder}`} className="block w-full h-full no-underline">
             <Card
                 className={`${props.i == 0 ? "h-48" : "h-40"} gap-y-0 bg-primary cursor-pointer group border-[#2b3686] hover:border-[#4756b8] border-2 p-4 transition-all duration-200 ease-in-out text-white`}
@@ -99,7 +106,7 @@ function Hero() {
         <section id="hero" className="relative h-screen flex flex-col items-center justify-center overflow-hidden">
             <ParticleCanvas/>
 
-            <div className="mx-auto z-10 w-[50%] flex items-center justify-center flex-col">
+            <div className="mx-auto z-10 w-full px-4 lg:w-[50%] lg:px-0 flex items-center justify-center flex-col">
                 <div
                     className="max-w-2xl backdrop-blur-sm bg-slate-900/30 p-8 rounded-lg border border-blue-500/10 transition-all duration-300 ease-in-out">
                     <h1 className="mb-2 text-5xl p-2 md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-300 to-cyan-300">
@@ -121,7 +128,7 @@ function Hero() {
                 {/*</div>*/}
             </div>
 
-            <div className={"z-10 mx-[20%]"}>
+            <div className={"z-10 mx-4 lg:mx-[20%]"}>
 
                 <div className={"mt-6 mb-2 flex"}>
                     <div className={"flex-1"}/>
@@ -136,7 +143,7 @@ function Hero() {
                     <div className={"pr-4"}/>
                 </div>
 
-                <div className={"flex gap-x-2 mt-1 items-start justify-between"}>
+                <div className={"flex flex-col lg:flex-row gap-x-2 gap-y-2 mt-1 items-start justify-between"}>
                     <Articles/>
                 </div>
             </div>
