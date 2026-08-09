@@ -23,7 +23,7 @@ and can come with good design aspects for free such as encapsulation and low cou
 The problem is that while you’re stepping through this process you’re cementing yourself into your first design. Think
 of it like carving a wooden structure piece by piece and gluing each part down before seeing the full picture. You end
 up introducing unnecessary patterns, abstractions, or structure.
-![Complex house](https://supernotes-resources.s3.amazonaws.com/image-uploads/5eda8525-6de0-4b3a-863e-1fe80114a73a--image.png)
+![Complex house](https://supernotes-resources.s3.amazonaws.com/image-uploads/efd51b6a-43ec-4a8e-8295-0b49b65127b7--tdd-demise--complex-house.webp)
 By the time you’ve written enough tests and built enough functionality, you may realize your design is flawed—or worse,
 there's a much simpler way to solve the problem. But now, rewriting things becomes costly. You've got dozens (or
 hundreds) of failing tests, many of which now break because of changes in your design or approach.
@@ -38,7 +38,7 @@ real complexity lies. Ironically, TDD can obstruct this learning process by disc
 scenario, tests are a means to an end to understand the problem space. If you opt to redesign your solution, you don't
 gain any benefit from following TDD a second time around. Your second design will have far fewer pieces carved, be a
 much simpler shape and stand more firm.
-![Simple house](https://supernotes-resources.s3.amazonaws.com/image-uploads/e4cf7e4a-655d-4f05-b71a-4d42a26970bd--image.png)
+![Simple house](https://supernotes-resources.s3.amazonaws.com/image-uploads/083c2abd-c9b8-41c8-be1e-b483f00013b3--tdd-demise--simple-house.webp)
 This doesn’t mean you shouldn’t write tests at all—higher-level end-to-end tests are still useful for catching
 regressions—but you should be more selective. Instead of writing unit tests by default, ask yourself: *What value will
 this test provide?*
@@ -48,7 +48,7 @@ this test provide?*
 TDD and prototyping are at odds. TDD favors incremental refinement of a fixed direction, while prototyping is about
 rapid exploration and learning. Once you’ve internalized the skills TDD teaches—breaking down problems, writing testable
 code—you may no longer need to follow the strict TDD workflow.
-![two roads](https://supernotes-resources.s3.amazonaws.com/image-uploads/bd7e5e95-cf80-4282-bb11-7676389ef4a2--image.png)
+![two roads](https://supernotes-resources.s3.amazonaws.com/image-uploads/2ba6fd2b-ad44-43bb-b35b-059b15bc5a84--tdd-demise--two-roads.webp)
 A side effect of strict TDD is excessive testing of implementation details. For example, changing an error message,
 moving a function, or extracting a class and 5 test suites fail because your mock is broken, a trivial error string
 changed, an argument wasn’t passed to a function anymore etc. these tests waste your time. These aren’t real

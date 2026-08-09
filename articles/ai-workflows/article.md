@@ -12,7 +12,7 @@ through practical examples and principles that help make AI genuinely useful in 
 The most common failure point in using AI is poor communication. People underestimate how much context and clarity AI
 needs. It’s not magic—it’s a language model predicting the next word based on probability.
 
-![Happy prompting](https://supernotes-resources.s3.amazonaws.com/image-uploads/c916266c-cbcb-4f86-94db-800be6ce80f4--image.png)
+![Happy prompting](https://supernotes-resources.s3.amazonaws.com/image-uploads/70b06f64-37a2-428b-91f5-4696226e503c--ai-workflows--happy-prompting.webp)
 
 Here are a few principles that help get the best out of AI:
 
@@ -37,7 +37,7 @@ In a project we all have little inefficiencies here and there. You always need t
 server, setting up this new microservice requires setting up 4 containers through docker compose, you always need to
 delete those files in that S3 bucket to restart your end to end test for a feature you're developing. These are perfect
 candidates for automation—but often too minor to justify scripting from scratch.
-![Optimise](https://supernotes-resources.s3.amazonaws.com/image-uploads/2420f9af-7558-4b3f-be8d-66df613e69e9--image.png)
+![Optimise](https://supernotes-resources.s3.amazonaws.com/image-uploads/b89a26a6-b0e0-498e-baf4-630d49f19550--ai-workflows--optimise.webp)
 However, this is a perfect task to give to an LLM. It's small, focused and fast to write if you know what you're doing.
 I've done this myself while working on a client where I constantly needed to port forward to services to debug
 behaviours in live environments, across numerous Kubernetes contexts. I had the LLM create a bash script, that took in a
@@ -61,7 +61,7 @@ identify the line number, and provide a rough diagnosis. It’s much faster and 
 # Tedious Work
 
 This is usually work that just requires a lot of typing, but is trivial to complete.
-![Tedious](https://supernotes-resources.s3.amazonaws.com/image-uploads/5ba1e587-7d91-4903-944e-abbe90a4b325--image.png)
+![Tedious](https://supernotes-resources.s3.amazonaws.com/image-uploads/5c7f7972-a2b7-4e73-8ace-942e6f0d64bd--ai-workflows--tedious.webp)
 
 For example:
 
@@ -97,7 +97,7 @@ LLMs can sometimes be more effective Google searches. When you don't quite know 
 fill this gap. It is effect to ask the LLM to "find people who have had a similar problem online and tell me how they
 fixed it". Using this I have found people on StackOverflow and GitHub who have reported my specific issue and found a
 solution, that were surprisingly hard to find manually.
-![Needle in a haystack AI](https://supernotes-resources.s3.amazonaws.com/image-uploads/861987d1-91ef-49ba-9d8d-71111ffa4cf0--image.png)
+![Needle in a haystack AI](https://supernotes-resources.s3.amazonaws.com/image-uploads/f07bafdb-c842-493d-8fd0-2995b8a0572c--ai-workflows--needle-in-a-haystack-ai.webp)
 This can also be useful if you're having the LLM assist with a problem and its getting stuck not making sense. When I
 tried to Google for the same problem, it was much harder for me to find the resource that the LLM had found.
 

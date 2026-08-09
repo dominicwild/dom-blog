@@ -4,7 +4,7 @@ Throughout my career, I've worked on teams across the effectiveness spectrum. I'
 I would consider truly "effective." By "effective" in this context, I mean developers who: spot problems others miss,
 foster cooperation that makes everyone's work easier, and benefit the entire organization beyond their immediate
 projects.
-![image.png](https://supernotes-resources.s3.amazonaws.com/image-uploads/ad8d9101-ba2e-4ef2-8014-d86820705e29--image.png)
+![image.png](https://supernotes-resources.s3.amazonaws.com/image-uploads/1d873920-2537-492a-b69a-b40295695c88--effective-developer--introduction.webp)
 I'll describe three key behaviors I've observed in these exceptional individuals: taking action
 beyond boundaries, embracing open communication, and practicing with clear purpose. Some of these behaviors I practice
 myself, while others I've witnessed firsthand. I'll also highlight behaviors that developers often think help them, but
@@ -29,7 +29,7 @@ someone they've never spoken to before. They'll ask the DevOps team if they can 
 they'll inform that person who keeps raising PRs on that library making breaking changes and come up with a solution,
 they'll figure out the right people who should be writing those tickets.
 
-![image.png](https://supernotes-resources.s3.amazonaws.com/image-uploads/6eabf070-7e14-49ae-9523-dbc54a056a6b--image.png)
+![image.png](https://supernotes-resources.s3.amazonaws.com/image-uploads/73f01ef6-e2b4-4db0-955d-6e954e990d82--effective-developer--active-vs-passive.webp)
 
 This is all to say, effective developers do not constrain themselves to "their lane." They take full ownership and
 impact the whole development process, spanning teams, business, testing, deployment, and beyond. Crossing these
@@ -47,7 +47,7 @@ answers at all, both outcomes are problematic because your communication has lim
 this knowledge is useful for an entire team, or someone you've never even heard of sees something wrong in the answer
 you've been given.
 
-![image.png](https://supernotes-resources.s3.amazonaws.com/image-uploads/295cecb9-e07c-4aec-9670-274372e01320--image.png)
+![image.png](https://supernotes-resources.s3.amazonaws.com/image-uploads/a74f6cf0-6570-4d5b-92bd-a0aa43eb9bee--effective-developer--open-communication.webp)
 
 On a project, a developer told me, "Just ask in the project channel, it's better." It's such an obvious, simple thing to
 do, and it overcomes all the issues with private one-on-one communications. It spreads knowledge and utilizes the
@@ -76,7 +76,7 @@ every week, or they'll do the same one 20 times and experiment with different so
 entirely useless, train a very specific set of skills: problem solving, data structures, and technologies (languages,
 libraries, etc.).
 
-![image.png](https://supernotes-resources.s3.amazonaws.com/image-uploads/5a0ee6b8-5235-41d1-9f5c-c3a311d4eea9--image.png)
+![image.png](https://supernotes-resources.s3.amazonaws.com/image-uploads/a5a566ef-bbc4-4640-bce9-ffad044d17d6--effective-developer--kata-trap.webp)
 
 Katas are very useful for starting to learn a language or developing your problem-solving skills in a particular area.
 However, you must practice them _with a purpose_, otherwise you don't develop yourself in a meaningful way. I've
@@ -91,7 +91,7 @@ unnecessarily complex solutions to simple problems (like
 this [satirical enterprise FizzBuzz implementation](https://github.com/EnterpriseQualityCoding/FizzBuzzEnterpriseEdition)),
 explain every part of it, and unironically relish in its "elegancy."
 
-![image.png](https://supernotes-resources.s3.amazonaws.com/image-uploads/d346d75c-245e-40c2-9f39-5bb0e9ecab5c--image.png)
+![image.png](https://supernotes-resources.s3.amazonaws.com/image-uploads/698ff4a9-33ff-470f-9551-3fd88aed80c9--effective-developer--coding-philosopher.webp)
 
 Their code is hard to understand, change, and read without being clued in on all their computer science theory. Talking
 to them can also be difficult due to their use of esoteric terms or very specific definitions for otherwise vague terms
@@ -115,7 +115,7 @@ develop. You'll _feel_ the value in pipelines you build, tests (if you need them
 choose to adopt. You will be exposed to genuine challenges: incomplete requirements, real user feedback, performance
 bottlenecks, deployment issues.
 
-![image.png](https://supernotes-resources.s3.amazonaws.com/image-uploads/b16886bc-bdf9-4f05-98d9-a06afca28344--image.png)
+![image.png](https://supernotes-resources.s3.amazonaws.com/image-uploads/26f50f07-0309-41af-b84f-84e3ce475f6e--effective-developer--projects-that-matter.webp)
 
 It is important to note that this is not required to be an effective developer. But it dramatically rounds out your
 skillset in all the areas that matter when developing solutions at scale.
@@ -131,7 +131,7 @@ These three behaviors—taking action beyond perceived boundaries, embracing ope
 genuine purpose—represent just some of the ways effective developers stand out from the crowd. While not an exhaustive
 list, they are behaviors I've consistently observed making a significant difference in developer impact.
 
-![image.png](https://supernotes-resources.s3.amazonaws.com/image-uploads/787d5982-c311-48bd-b852-0f9017a0e0e2--image.png)
+![image.png](https://supernotes-resources.s3.amazonaws.com/image-uploads/cc014731-8633-46f6-98aa-e5bb3a885452--effective-developer--conclusion.webp)
 
 Effective developers don't wait for permission to fix problems; if they can provide value, they just do it. They keep
 their communication open and public, benefiting the entire team rather than hiding knowledge in private conversations.

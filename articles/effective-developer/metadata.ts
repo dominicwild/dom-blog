@@ -5,7 +5,7 @@ const metadata: ArticleMetaData = {
     description: "Three behaviours that set effective developers apart: taking ownership beyond their lane, open communication, and practising with real purpose.",
     tags: ["Developer", "Practices", "Effectiveness"],
     date: new Date("28 Apr 2025"),
-    image: "https://supernotes-resources.s3.amazonaws.com/image-uploads/787d5982-c311-48bd-b852-0f9017a0e0e2--image.png",
+    image: "https://supernotes-resources.s3.amazonaws.com/image-uploads/d73369b7-e468-42eb-a48d-6e9219e8084a--effective-developer--cover-image.webp",
     show: true
 }
 
