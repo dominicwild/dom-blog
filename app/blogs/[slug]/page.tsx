@@ -152,13 +152,20 @@ async function Article({slug}: { slug: string }) {
 }
 
 export default async function Page({params}: { params: Promise<Record<string, string>> }) {
+    const slug = (await params).slug
+    const articleMetadata = await getArticleMetaData(slug);
+
+    if (!articleMetadata || !articleMetadata.show) {
+        notFound();
+    }
+
     return (
         <Suspense fallback={
             <div className="flex justify-center items-center h-screen w-full">
                 <Spinner size="xl" variant="primary"/>
             </div>
         }>
-            <Article slug={(await params).slug}/>
+            <Article slug={slug}/>
         </Suspense>
     );
 }
