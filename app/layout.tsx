@@ -4,6 +4,7 @@ import "./globals.css";
 import {Analytics} from "@vercel/analytics/next";
 import React, {ReactNode} from "react";
 import {EmailSubmit} from "./_components/EmailSubmit";
+import {VisitTracker} from "./_components/visit-tracker";
 import {absoluteUrl, siteDescription, siteImage, siteName, siteUrl} from "@/app/seo";
 
 
@@ -78,6 +79,7 @@ export default function RootLayout({children,}: Readonly<{
                 <EmailSubmit/>
             </div>
         </div>
+        <VisitTracker/>
         </body>
 
         </html>
