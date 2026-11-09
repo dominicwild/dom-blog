@@ -79,7 +79,7 @@ export default function RootLayout({children,}: Readonly<{
                 <EmailSubmit/>
             </div>
         </div>
-        <VisitTracker/>
+        <VisitTracker privatePaths={[]}/>
         </body>
 
         </html>
